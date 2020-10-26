@@ -1,0 +1,26 @@
+{% extends "./base.html" %}
+
+{% load static %}
+
+{% block title %}Tourisme{% endblock %}
+
+{% block content %}
+    <div class="category-detail">
+        <h1>{{category.label}} - Groupe {{category.code}} : {{category.sample}} ou equivalent</h1>
+        <div id="description">
+            <img src="{% static 'rental/images/' %}{{category.image}}" alt="image" />
+            <p><B>{{category.description}}</B>
+                <br></br>
+                {{category.nb_seats}} places {{category.nb_luggage}} bagages {{category.nb_doors}} portes
+                <br></br>
+                {{category.gear}} {{category.energy}} {{category.climate_control}}
+                <br></br>
+                <B>Véhicules similaires :</B> {{category.equivalent}}
+            </p>
+        </div>
+        <div id="regles">
+            <p>Pré-autorisation bancaire : {{category.pre_pay}} - ce montant vous sera demandé en agence lors de la prise de véhicule et <I>ne sera pas débuté de votre compte bancaire</I>, sauf en cas de non restitution ou de dégradation du véhicule.
+            </br>NB : les caractéristiques de ce véhicule sont présentées à titre d'exemple et ne sont pas garanties.</br><I>Minimum requis:</I> 21 ans, <I>Validité de permis</I> 1 an</p>
+        </div>
+    </div>
+{% endblock %}

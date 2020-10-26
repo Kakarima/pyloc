@@ -1,0 +1,29 @@
+{% extends "./base.html" %}
+
+{% load static %}
+
+{% block title %}Tourisme{% endblock %}
+
+<link rel="stylesheet" href="{% static 'rental/style.css' %}"/>
+
+{% block content %}
+
+<div class="categories ">
+    {% for category in category_list %}
+    <div class="list-item">
+        <div class="img-container">
+            <img src="{% static 'rental/images/' %}{{category.image}}" alt="image" />
+        </div>
+        <div class="item-description">
+            <p>({{ category.code }}) {{ category.label }}</br>{{ category.sample }}</p>
+        </div>
+        <div class="link-details">
+            <a href="{%url 'tourism_category' category.code %}">Voir détails</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

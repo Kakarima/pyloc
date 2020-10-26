@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../../../:\Users\33605\Documents\Ecole\Dauphine\Cours\03. Concept du développement SGBD et du web\TD\Django\PyLOC\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

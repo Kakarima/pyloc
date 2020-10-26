@@ -1,0 +1,93 @@
+<!DOCTYPE html> 
+<html lang="fr">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8"/>
+    <title>{% block title %}PyLOC{% endblock%}</title>
+    <link rel="stylesheet" href="{% static 'rental/style.css' %}"/>
+    <script src="{% static 'rental/js/font_awesome.js' %}"></script>
+</head>
+
+<body>
+<header>
+    <div id="main-title"><a href="{%url 'home' %}">PyLOC</a></div>
+    <div id="icons-menu">
+        <div id="icons">
+            <i class="fa fa-user" aria-hidden="true"></i><a href="./connexion.html">Se connecter</a>
+        </div>
+
+        <nav id="main-menu" aria-label="Menu Principal">
+            <ul>
+                <li><a href="{% url 'tourism_categories' %}">Tourisme</a></li>
+                <li><a href="{% url 'utilitaires_categories' %}">Utilitaires</a></li>
+                <li><a href="{% url 'services_categories' %}">Services</a></li>
+                <li><a href="{% url 'agences_categories' %}">Agences</a></li>
+                <li><a href="{% url 'entreprise_categories' %}">Entreprise</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section>
+    <div>{% block content %}{% endblock %}</div>
+</section>
+
+
+<footer>
+    <div class="footer-bloc">
+        <div id="reservation">
+            <h2>A propos de votre réservation</h2>
+            <nav class="nav-footer" aria-label="A propos de votre réservation"></nav>
+            <ul>
+                <li><a href="{% url 'todo_categories' %}">Gérer votre réservation</a></li>
+                <li><a href="{% url 'todo_categories' %}">Imprimer votre facture</a></li>
+                <li><a href="{% url 'todo_categories' %}">Enregistrement en ligne</a></li>
+                <li><a href="{% url 'todo_categories' %}">Nous contacter</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bloc">
+        <div id="espace-pro">
+            <h2>Espace pro</h2>
+            <nav class="nav-footer" aria-label="Espace Pro"></nav>
+            <ul>
+                <li><a href="{% url 'todo_categories' %}">Entreprises</a></li>
+                <li><a href="{% url 'todo_categories' %}">Agences de voyage</a></li>
+                <li><a href="{% url 'todo_categories' %}">Tours opérateurs</a></li>
+                <li><a href="{% url 'todo_categories' %}">Location moyenne durée</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bloc">
+        <div id="about">
+            <h2>A propos de PyLOC</h2>
+            <nav class="nav-footer" aria-label="A propos de PyLOC"></nav>
+            <ul>
+                <li><a href="{% url 'todo_categories' %}">Votre avis</a></li>
+                <li><a href="{% url 'todo_categories' %}">Carrières</a></li>
+                <li><a href="{% url 'todo_categories' %}">Nos partenaires</a></li>
+                <li><a href="{% url 'todo_categories' %}">Notre entreprise</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bloc">
+        <div id="informations-legales">
+            <h2>Informations légales</h2>
+            <nav class="nav-footer" aria-label="Informations légales"></nav>
+            <ul>
+                <li><a href="{% url 'todo_categories' %}">Politique de traitement des dommages</a></li>
+                <li><a href="{% url 'todo_categories' %}">Dépôt de garantie</a></li>
+                <li><a href="{% url 'todo_categories' %}">Politique de confidentialité</a></li>
+                <li><a href="{% url 'todo_categories' %}">Conditions générales</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
+
