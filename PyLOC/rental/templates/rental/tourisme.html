@@ -15,10 +15,10 @@
             <img src="{% static 'rental/images/' %}{{category.image}}" alt="image" />
         </div>
         <div class="item-description">
-            <p>({{ category.code }}) {{ category.label }}</br>{{ category.sample }}</p>
+            <p>({{ category.code }}) {{ category.label }}<br>{{ category.sample }}</p>
         </div>
         <div class="link-details">
-            <a href="{%url 'tourism_category' category.code %}">Voir détails</a>
+            <a href="{%url 'tourism_category' category.id %}">Voir détails</a>
         </div>
     </div>
     {% endfor %}
