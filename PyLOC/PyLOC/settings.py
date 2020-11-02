@@ -80,8 +80,10 @@ WSGI_APPLICATION = 'PyLOC.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pylocdb',
+        'USER': 'root',
+        'PASSWORD': 'Acer77600'
     }
 }
 

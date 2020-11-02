@@ -6,21 +6,42 @@
 
 {% block content %}
     <div class="category-detail">
-        <h1>{{category.label}} - Groupe {{category.code}} : {{category.sample}} ou equivalent</h1>
+        <h1>{{ category.label }} - Groupe {{ category.code }} : {{ category.sample }} ou equivalent</h1>
         <div id="description">
-            <img src="{% static 'rental/images/' %}{{category.image}}" alt="image" />
-            <p><B>{{category.description}}</B>
-                <br></br>
-                {{category.nb_seats}} places {{category.nb_luggage}} bagages {{category.nb_doors}} portes
-                <br></br>
-                {{category.gear}} {{category.energy}} {{category.climate_control}}
-                <br></br>
-                <B>Véhicules similaires :</B> {{category.equivalent}}
+            <img src="{% static 'rental/images/' %}{{ category.image }}" alt="image"/>
+            <p class="description-detail"><B>{{ category.description }}</B>
+                <br>
+                <br>
+                <span>
+                    <img src="{% static 'rental/icones/porte.png' %}"/> {{ category.nb_doors }} porte{{ category.nb_doors|pluralize }}
+                </span>
+                <span>
+                    <img src="{% static 'rental/icones/Personne.jpg' %}"/> {{ category.nb_seats }} place{{ category.nb_seats|pluralize }}
+                </span>
+                <span>
+                    <img src="{% static 'rental/icones/Bagage.png' %}"/> {{ category.nb_luggage }} bagage{{ category.nb_luggage|pluralize }}
+                </span>
+                <br><br>
+                <span>
+                    <img src="{% static 'rental/icones/Vitesse.png' %}"/> {{ category.get_gear_display }}
+                </span>
+                <span>
+                    <img src="{% static 'rental/icones/Essence.png' %}"/> {{ category.get_energy_display }}
+                </span>
+                <span>
+                    <img src="{% static 'rental/icones/Climatisation.png' %}"/>
+                    {% if category.climate_control %}Climatisation {% else %} -sans clim-{% endif %}
+                </span>
+                <br><br>
+                <B>Véhicules similaires :</B> {{ category.equivalent }}
             </p>
         </div>
         <div id="regles">
-            <p>Pré-autorisation bancaire : {{category.pre_pay}} - ce montant vous sera demandé en agence lors de la prise de véhicule et <I>ne sera pas débuté de votre compte bancaire</I>, sauf en cas de non restitution ou de dégradation du véhicule.
-            </br>NB : les caractéristiques de ce véhicule sont présentées à titre d'exemple et ne sont pas garanties.</br><I>Minimum requis:</I> 21 ans, <I>Validité de permis</I> 1 an</p>
+            <p>Pré-autorisation bancaire : {{ category.pre_pay }} - ce montant vous sera demandé en agence lors de la
+                prise de véhicule et <I>ne sera pas débuté de votre compte bancaire</I>, sauf en cas de non restitution
+                ou de dégradation du véhicule.
+                </br>NB : les caractéristiques de ce véhicule sont présentées à titre d'exemple et ne sont pas
+                garanties.</br><I>Minimum requis:</I> 21 ans, <I>Validité de permis</I> 1 an</p>
         </div>
     </div>
 {% endblock %}

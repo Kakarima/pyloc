@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def home(request):
+def gestion(request):
     return render(request, 'gestion/gestion.html')
 
 def vehicules_categories(request):

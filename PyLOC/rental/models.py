@@ -19,7 +19,7 @@ class Category(models.Model):
     code = models.CharField(max_length=1)
     label = models.CharField(max_length=30)
     sample = models.CharField(max_length=30)
-    image = models.CharField(max_length=30)
+    image = models.CharField(max_length=80)
     description = models.TextField(null=True)
     nb_seats = models.IntegerField(default=5)
     nb_luggage = models.IntegerField(default=0)
