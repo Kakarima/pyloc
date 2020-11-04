@@ -9,39 +9,39 @@
         <h1>{{ category.label }} - Groupe {{ category.code }} : {{ category.sample }} ou equivalent</h1>
         <div id="description">
             <img src="{% static 'rental/images/' %}{{ category.image }}" alt="image"/>
-            <p class="description-detail"><B>{{ category.description }}</B>
+            <p class="description-detail"><strong>{{ category.description }}</strong>
                 <br>
                 <br>
                 <span>
-                    <img src="{% static 'rental/icones/porte.png' %}"/> {{ category.nb_doors }} porte{{ category.nb_doors|pluralize }}
+                    <img src="{% static 'rental/icones/porte.png' %}" alt="icone-portes"/> {{ category.nb_doors }} porte{{ category.nb_doors|pluralize }}
                 </span>
                 <span>
-                    <img src="{% static 'rental/icones/Personne.jpg' %}"/> {{ category.nb_seats }} place{{ category.nb_seats|pluralize }}
+                    <img src="{% static 'rental/icones/Personne.jpg' %}" alt="icone-utilisateur"/> {{ category.nb_seats }} place{{ category.nb_seats|pluralize }}
                 </span>
                 <span>
-                    <img src="{% static 'rental/icones/Bagage.png' %}"/> {{ category.nb_luggage }} bagage{{ category.nb_luggage|pluralize }}
+                    <img src="{% static 'rental/icones/Bagage.png' %}" alt=""icone-bagages/> {{ category.nb_luggage }} bagage{{ category.nb_luggage|pluralize }}
                 </span>
                 <br><br>
                 <span>
-                    <img src="{% static 'rental/icones/Vitesse.png' %}"/> {{ category.get_gear_display }}
+                    <img src="{% static 'rental/icones/Vitesse.png' %}" alt="icone-boite-vitesse"/> {{ category.get_gear_display }}
                 </span>
                 <span>
-                    <img src="{% static 'rental/icones/Essence.png' %}"/> {{ category.get_energy_display }}
+                    <img src="{% static 'rental/icones/Essence.png' %}" alt="type-essence"/> {{ category.get_energy_display }}
                 </span>
                 <span>
-                    <img src="{% static 'rental/icones/Climatisation.png' %}"/>
+                    <img src="{% static 'rental/icones/Climatisation.png' %}" alt="climatisation"/>
                     {% if category.climate_control %}Climatisation {% else %} -sans clim-{% endif %}
                 </span>
                 <br><br>
-                <B>Véhicules similaires :</B> {{ category.equivalent }}
+                <strong>Véhicules similaires :</strong> {{ category.equivalent }}
             </p>
         </div>
         <div id="regles">
             <p>Pré-autorisation bancaire : {{ category.pre_pay }} - ce montant vous sera demandé en agence lors de la
-                prise de véhicule et <I>ne sera pas débuté de votre compte bancaire</I>, sauf en cas de non restitution
+                prise de véhicule et <em>ne sera pas débuté de votre compte bancaire</em>, sauf en cas de non restitution
                 ou de dégradation du véhicule.
-                </br>NB : les caractéristiques de ce véhicule sont présentées à titre d'exemple et ne sont pas
-                garanties.</br><I>Minimum requis:</I> 21 ans, <I>Validité de permis</I> 1 an</p>
+                <br/>NB : les caractéristiques de ce véhicule sont présentées à titre d'exemple et ne sont pas
+                garanties.<br/><em>Minimum requis:</em> 21 ans, <em>Validité de permis</em> 1 an</p>
         </div>
     </div>
 {% endblock %}
