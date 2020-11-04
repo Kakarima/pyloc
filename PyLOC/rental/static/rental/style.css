@@ -306,7 +306,7 @@ footer a {
     color: white;
 }
 
-#description p B {
+#description p strong {
     color: goldenrod;
 }
 
@@ -315,7 +315,7 @@ footer a {
     margin-left: 50px;
 }
 
-#regles p I
+#regles p em
 {
     font-style: italic;
     color: goldenrod;
