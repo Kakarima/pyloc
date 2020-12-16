@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8"/>
+    <title>{% block title %}PyLOC{% endblock%}</title>
+    <link rel="stylesheet" href="{% static 'gestion/style.css' %}"/>
+    <script src="{% static 'rental/js/font_awesome.js' %}"></script>
+</head>
+
+<body>
+<header>
+    <div id="main-title"><a href="{%url 'gestion:gestion' %}">PyLOC</a></div>
+    <div id="icons-menu">
+        <div id="icons">
+            <i class="fa fa-user" aria-hidden="true"></i><a href="./connexion.html">GESTIONNAIRE</a>
+        </div>
+    </div>
+</header>
+
+<nav id="main-menu" aria-label="Menu Principal">
+    <ul>
+        <li><a href="{% url 'gestion:vehicules' %}">Véhicules</a></li>
+        <li><a href="{% url 'gestion:disponibilites' %}">Disponibilités</a></li>
+        <li><a href="{% url 'gestion:reservation' %}">Réservation</a></li>
+    </ul>
+</nav>
+
+<nav id="color"></nav>
+
+<section>
+    <div>{% block content %}{% endblock %}</div>
+</section>
+
+
+<footer>
+    <div class="footer-bloc"></div>
+</footer>
+</body>
+
+</html>
+

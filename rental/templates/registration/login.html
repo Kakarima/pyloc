@@ -1,0 +1,29 @@
+{% extends "rental/base.html" %}
+{% load static %}
+{% block title %}Login visiteur{% endblock %}
+
+{% block content %}
+    <div id="login-pyloc">
+        <div class="login-and-registration">
+           <h1>Connexion visiteur</h1>
+            <div class="login-form">
+                {% if form.errors %}
+                    <p>
+                        Le nom d'utilisateur et le mot de passe ne correspondent pas.
+                        Merci d'essayer de nouveau...
+                    </p>
+                {% endif %}
+                <form action="{% url 'rental:login' %}" method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}"/>
+                    <p><input type="submit" value="LOGIN"></p>
+                </form>
+            </div>
+            <p>Pas de compte ? Vous pouvez vous
+                <a href="{% url 'rental:registration' %}?next={{ next }}"> enregistrer</a>
+                en remplissant un simple formulaire !
+            </p>
+        </div>
+    </div>
+{% endblock %}

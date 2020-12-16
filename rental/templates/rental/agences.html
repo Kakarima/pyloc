@@ -1,0 +1,39 @@
+{% extends "./base.html" %}
+
+{% load static %}
+
+{% block title %}Agences{% endblock %}
+
+
+{% block content %}
+    <div class="liste-agences">
+        <table id="Liste_des_agences" aria-label="Liste des agences">
+            <thead>
+                <tr class="titre-agences">
+                    <td colspan="2">
+                        <h3>Liste des agences</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Nom Agence</strong></td>
+                    <td><strong>Adresse</strong></td>
+                    <td><strong>Code Postal</strong></td>
+                    <td><strong>Ville</strong></td>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for agency in agencies %}
+                <tr>
+                    <td><a href="{% url 'rental:agences' id_agency=agency.id %}">{{ agency.name }}</a></td>
+                    <td>{{ agency.address }}</td>
+                    <td>{{ agency.postal_code }}</td>
+                    <td> {{ agency.city }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

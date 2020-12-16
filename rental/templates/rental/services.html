@@ -1,0 +1,48 @@
+{% extends "./base.html" %}
+
+{% block title %}Service{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <div class="services-section">
+        <h1>Nos services</h1>
+        <table>
+            <tr>
+                <td><h2>Enregistrement en ligne</h2></td>
+                <td><h2>Aller simple</h2></td>
+                <td><h2>Applications</h2></td>
+            </tr>
+
+            <tr>
+                <td>
+                    Le service d'enregistrement en ligne nous permet de préparer votre contrat de location
+                    avant même votre arrivée au comptoir. Une fois ce service activée en ligne, nous pourrons
+                    utiliser les détails de votre réservation.<br/><br/>
+                    Ainsi, en réduisant la partie administrative quand vous êtes au comptoir, vous pourrez
+                    être sur la route plus rapidement.
+                </td>
+                <td>
+                    Vous avez besoin d'un véhicule uniquement pour un aller simple ? PYLOC vous propose de louer
+                    un véhicule dans une agence et de le déposer dans une autre. Vous avez une totale liberté.
+                </td>
+                <td>
+                     Vous pouvez dès à présent réserver votre véhicule sur votre smartphone via notre
+                    application et notre site mobile. Réservez partout où vous voulez et à n'importe
+                    quel moment depuis iOS ou Android.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="{% static 'rental/images/services/en_ligne.png' %}" alt="en-ligne"/>
+                </td>
+                <td>
+                    <img src="{% static 'rental/images/services/aller_simple.png' %}" alt="aller_simple"/>
+                </td>
+                <td>
+                    <img src="{% static 'rental/images/services/applications.png' %}" alt="applications"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
