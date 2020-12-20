@@ -21,4 +21,5 @@ urlpatterns = [
     path('agences/', views.agences, name='agences'),
     path('agences/agence/<int:id_agency>', views.agence, name='agence'),
     path('confidentialite/', views.confidentialite, name='confidentialite'),
+    path('register/contract', views.register_contract, name='register_contract'),
 ]

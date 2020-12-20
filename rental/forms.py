@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
-
+from django.forms import ModelForm
+from .models import Category, Agency, Customer, Contract
 from .models import Customer
-
+from datetime import datetime
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
@@ -30,3 +31,60 @@ class CustomerEditForm(forms.ModelForm):
     class Meta:
         model = Customer
         fields = ('licence_scan', 'licence_number', 'address', 'postal_code', 'city', 'phone', 'age', 'user')
+
+#Partie Karima
+
+def get_VehiclesCategories():
+    return tuple([(None, '')] + list(Category.objects.values_list('id', 'sample').distinct()))
+
+def get_Agencies():
+    return tuple([(None, '')] + list(Agency.objects.values_list('id', 'name').distinct()))
+
+class SearchVehicleAgencyForm(ModelForm):
+    class Meta:
+        model = Agency
+        fields = ['name']
+        widgets = {'name': forms.Select(choices=get_Agencies())}
+
+class SearchVehicleCategoriesForm(ModelForm):
+            class Meta:
+                model = Category
+                fields = ['sample']
+                widgets = {'sample': forms.Select(choices=get_VehiclesCategories())}
+
+class DateTimeLocalInput(forms.DateTimeInput):
+    input_type = 'datetime-local'
+
+class SearchVehicleDatesForm(forms.Form):
+        now = datetime.now()
+        date_input_formats = ['%Y-%m-%dT%H:%M',
+                              '%d/%m/%Y %H:%M',
+                              '%m/%d/%y']
+
+        date_start = forms.DateTimeField(label='Date de depart',
+                                         input_formats=['%Y-%m-%dT%H:%M'],
+                                         widget=forms.DateTimeInput(attrs={'type': 'datetime-local' },
+                                         format='%Y-%m-%dT%H:%M'),
+                                         required=True
+                                         )
+
+        date_end = forms.DateTimeField(widget=DateTimeLocalInput(),
+                                       required=True,
+                                       input_formats = date_input_formats)
+
+class SearchVehicleCustomerForm(ModelForm):
+    class Meta:
+        model = Customer
+        fields = ['name', 'email', 'phone']
+
+class RentVehicleAgencyDatesForm(forms.Form):
+    date_input_formats = ['%Y-%m-%dT%H:%M',
+                          '%d/%m/%Y %H:%M',
+                          '%m/%d/%y']
+    agency_id = forms.IntegerField(required=True)
+    vehicle_id = forms.IntegerField(required=True)
+    booking_date_start = forms.DateTimeField(input_formats=date_input_formats, required=True)
+    booking_date_end = forms.DateTimeField(input_formats=date_input_formats, required=True)
+    customer_name = forms.CharField(required=True)
+    customer_email = forms.EmailField(required=True)
+    customer_phone = forms.CharField(required=True)

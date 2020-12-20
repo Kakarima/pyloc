@@ -1,0 +1,20 @@
+{% extends "rental/base.html" %}
+
+{% block title %}PyLOC{% endblock %}
+
+{% block content %}
+
+    <div id="error" style="color: red;">
+    {% if ctr_error == '' %}
+        Veuillez créer un compte
+    {% endif %}
+    </div>
+
+    <div id="result" style="color: green;">
+    {% if ctr_error != '' %}
+        Votre compte client a été créé. Il porte le numéro {{ customer.id }}<br />
+            Votre contrat de location n°{{ contract.id }} du {{ booking_date_start }} au {{ booking_date_end }} pour une {{ vehicle.category.sample }} pris auprès de l'agence {{ agency.name }} a bien été enregistré.<br />
+    {% endif %}
+    </div>
+
+{% endblock %}

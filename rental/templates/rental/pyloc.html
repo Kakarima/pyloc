@@ -2,13 +2,44 @@
 
 {% block content %}
 
-<div id="home-main-content">
-    <div id="titre-main-content">
-        <h1>Louez en toute sérénité</h1>
-    </div>
+    <div id="home-main-content">
+        <div id="titre-main-content">
+            <h1>Louez en toute sérénité</h1>
+        </div>
+        <div>
+            {% if display_results %}
+                {{ vehicles.count }} véhicules trouvés suite à votre recherche
+            {% endif %}
+        </div>
+        <div>
+            {% if vehicles.count %}
+                {{ vehicles.count }} Véhicules disponibles à l'agence {{ agency.name }} pour une location d{{ display_booking_date_start }} au {{ display_booking_date_end }} <br/>
+                <table>
+                    {% for vehicle in vehicles %}
+                        <tr>
+                            <td>{{ category.sample }} immatriculé {{ vehicle.registration_number }}</td>
+                            <td>
+                                <form id="rent_vehicle_{{ forloop.counter }}" action={% url 'rental:register_contract' %} method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="agency_id" value="{{ vehicle.agence.id }}"/>
+                                    <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}"/>
+                                    <input type="hidden" name="booking_date_start" value="{{ booking_date_start }}"/>
+                                    <input type="hidden" name="booking_date_end" value="{{ booking_date_end }}"/>
+                                    <input type="hidden" name="customer_name" value="{{ customer.name }}"/>
+                                    <input type="hidden" name="customer_email" value="{{ customer.email }}"/>
+                                    <input type="hidden" name="customer_phone" value="{{ customer.phone }}"/>
+                                    <input type="submit" value="Réserver"/>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </div>
 
-    <div id="formulaire">
-        <form>
+        <div id="formulaire">
+
+            {% comment %} <form>
             <table id="rental-form" aria-label="Formulaire de réservation">
                 <tr>
                     <td colspan="2">
@@ -76,7 +107,73 @@
                 </tr>
 
             </table>
-        </form>
+        </form>{% endcomment %}
+            {% if display_form or vehicles.count == 0 %}
+                <form id="search_vehicles" name="search" method="post" action=" ">
+                    {% csrf_token %}
+                    <table id="rental-form">
+                        <tr>
+                            <th colspan="2">Réserver d&egrave;s aujourd'hui</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                {{ searchvehicleagency.name.errors }}
+                                Agence : {{ searchvehicleagencyform.name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                {{ searchvehiclecategoriesform.sample.errors }}
+                                Choisissez le mod&egrave;le : {{ searchvehiclecategoriesform.sample }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                D&eacute;part
+                            </td>
+                            <td>
+                                {{ searchvehicledatesform.date_start.errors }}
+                                {{ searchvehicledatesform.date_start }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Retour
+                            </td>
+                            <td>
+                                {{ searchvehiclemodelsform.date_end.errors }}
+                                {{ searchvehicledatesform.date_end }}
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                {{ searchvehiclecustomerform.name.errors }}
+                                Nom : {{ searchvehiclecustomerform.name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                {{ searchvehiclecustomerform.email.errors }}
+                                Email : {{ searchvehiclecustomerform.email }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                {{ searchvehiclecustomerform.phone.errors }}
+                                T&eacute;l&eacute;phone : {{ searchvehiclecustomerform.phone }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" name="btn_submit" value="Valider"/>
+                        </tr>
+                    </table>
+
+
+                </form>
+            {% endif %}
+        </div>
     </div>
-</div>
 {% endblock %}

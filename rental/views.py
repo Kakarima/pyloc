@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-
+from .forms import SearchVehicleDatesForm, SearchVehicleCategoriesForm, SearchVehicleCustomerForm, SearchVehicleAgencyForm, RentVehicleAgencyDatesForm
+from .models import Category, Agency, Customer, Contract, Vehicle
 from .models import Category, Agency
-from rental.forms import UserRegistrationForm, UserEditForm, CustomerEditForm
+from .forms import UserRegistrationForm, UserEditForm, CustomerEditForm
+from django.db.models import Subquery
 
 def home(request):
     agencies = Agency.objects.all
@@ -96,3 +98,162 @@ def edit_customer(request):
         next_page = request.GET.get('next')
         return render(request, 'rental/edit_customer.html',
                       {'user_form': user_form, 'customer_form': customer_form, 'next': next_page})
+
+
+#Fait par Karima
+
+def home(request):
+    """ User home page"""
+    #
+    # agencyform = AgencyForm(prefix='exercice3_agences')
+    # categoryform = CategoryForm(prefix='exercice3_categories')
+
+    # formulaire découpé en 4 parties
+
+    post = request.POST or None
+    print(post)
+    searchvehicledatesform = SearchVehicleDatesForm(post, prefix='search_dates')
+    searchvehiclecategoriesform = SearchVehicleCategoriesForm(post, prefix='search_vehicle_category')
+    searchvehicleagencyform = SearchVehicleAgencyForm(post, prefix='search_agency')
+    searchvehiclecustomerform = SearchVehicleCustomerForm(post, prefix='search_customer')
+
+    display_form = True
+    display_results = False
+    display_booking_date_start = display_booking_date_end = booking_date_start = booking_date_end = vehicles = agency = category = customer = None
+    #vehicles_list = Vehicle.objects.filter(brand='Renault').order_by('-date_immatriculation')
+
+    # Si l'ensemble du formulaire est valide
+    if searchvehiclecategoriesform.is_valid() \
+            and searchvehicledatesform.is_valid() \
+            and searchvehiclecustomerform.is_valid() \
+            and searchvehicleagencyform.is_valid():
+
+        # On vérifie la disponibilité de véhicules demandés pour les critères indiqués
+        # Agence, dates, modèle
+        # récupération du modèle
+
+        category_id = searchvehiclecategoriesform.cleaned_data.get('sample')
+        category = Category.objects.get(id=category_id)
+        print('category = ' + str(category))
+
+        # récupération de l'agence
+        agency_id = searchvehicleagencyform.cleaned_data.get('name')
+        agency = Agency.objects.get(id=agency_id)
+
+        # Liste des contrats en cours pour l'agence considérée
+        display_booking_date_start = searchvehicledatesform.cleaned_data.get('date_start')  # on récupère la date de début souhaitée pour la location
+        display_booking_date_end = searchvehicledatesform.cleaned_data.get('date_end')  # on récupère la date de début souhaitée pour la location
+
+        booking_date_start = post.get('search_dates-date_start')
+        booking_date_end = post.get('search_dates-date_end')
+
+        # variable customer
+        customer_name = searchvehiclecustomerform.cleaned_data.get('name')
+        customer_email = searchvehiclecustomerform.cleaned_data.get('email')
+        customer_phone = searchvehiclecustomerform.cleaned_data.get('phone')
+        customer = Customer(name=customer_name, email=customer_email, phone=customer_phone)
+
+        #liste des contrats déjà conclus aux dates indiquées (dont la date de fin est postérieure à la date de début de la location recherchée) pour l'agence souhaitée
+        already_contracted = Contract.objects.all() \
+            .filter(agence=agency) \
+            .filter(date_end__gt=booking_date_start)
+
+
+
+        # Liste des véhicules disponible correspondant à l'agence et au modèle et étant actifs et dont on exclut ceux concernés par les contrats déjà conclus (requête "already_contracted" ci dessus)
+        vehicles = Vehicle.objects.all() \
+            .filter(active=True) \
+            .filter(category=category) \
+            .filter(agence=agency) \
+            .exclude(id__in=Subquery(already_contracted.values('vehicle')))
+        print('query = ' + str(vehicles.query))
+        for v in vehicles:
+            print('vehicle = ' + str(v))
+
+        display_form = False
+        display_results = True
+
+    return render(request, 'rental/pyloc.html',{'searchvehicledatesform' : searchvehicledatesform,
+                                                'searchvehiclecategoriesform' : searchvehiclecategoriesform,
+                                                'searchvehicleagencyform' : searchvehicleagencyform,
+                                                'searchvehiclecustomerform' : searchvehiclecustomerform,
+                                                'display_form' : display_form,
+                                                'display_results':  display_results,
+                                                'vehicles' : vehicles,
+                                                'booking_date_start': booking_date_start,
+                                                'booking_date_end': booking_date_end,
+                                                'display_booking_date_start':display_booking_date_start,
+                                                'display_booking_date_end': display_booking_date_end,
+                                                'agency' : agency,
+                                                'category' : category,
+                                                'customer': customer})
+
+def register_contract(request):
+
+    from .forms import RentVehicleAgencyDatesForm
+    post = request.POST or None
+
+    # formulaire custom pour la validation des données
+
+
+    rentvehicleagencydatesform = RentVehicleAgencyDatesForm(post)
+
+    print('rentvehicleagencydatesform')
+    print(rentvehicleagencydatesform.is_valid())
+    print(rentvehicleagencydatesform.errors)
+
+    if rentvehicleagencydatesform.is_valid():
+        contract = customer = ctr_error = agency = vehicle = None
+        # récupération de l'agence
+        agency_id = rentvehicleagencydatesform.cleaned_data.get('agency_id')
+        agency = Agency.objects.get(id=agency_id)
+
+
+        # récupération du véhicule
+        vehicle_id = rentvehicleagencydatesform.cleaned_data.get('vehicle_id')
+        vehicle = Vehicle.objects.all().get(id=vehicle_id, active=True)
+        print('vehicle = ' + str(vehicle))
+
+        booking_date_start = rentvehicleagencydatesform.cleaned_data.get('booking_date_start')  # on récupère la date de début souhaitée pour la location
+        booking_date_end = rentvehicleagencydatesform.cleaned_data.get('booking_date_end')  # on récupère la date de début souhaitée pour la location
+
+        #On vérifie qu'aucun contrat n'est en cours
+        already_contracted = Contract.objects.all().filter(agence=agency).filter(vehicle=vehicle).filter(date_end__gt=booking_date_start)
+        print('already_contracted = ' + str(already_contracted))
+
+        #erreurs
+        error = ''
+        if already_contracted.count() > 0:
+            ctr_error = 'Impossible de réserver à partir des choix transmis. Le véhicule demandé n\'est plus disponible.'
+        else:
+            # création d'un compte client
+            ctr_error = ''
+
+            # variable customer
+            customer_name = rentvehicleagencydatesform.cleaned_data.get('customer_name')
+            customer_email = rentvehicleagencydatesform.cleaned_data.get('customer_email')
+            customer_phone = rentvehicleagencydatesform.cleaned_data.get('customer_phone')
+            customer = Customer(name=customer_name, email=customer_email, phone=customer_phone)
+            customer.save()
+
+
+            contract = Contract(vehicle=vehicle, customer=customer, agence=agency, date_start=booking_date_start, date_end=booking_date_end,scheduled_date_end=booking_date_end)
+            contract.save()
+
+
+        #context
+    context = {
+            'ctr_error': ctr_error,
+            'agency': agency,
+            'vehicle': vehicle,
+            'booking_date_start': booking_date_start,
+            'booking_date_end': booking_date_end,
+            'rentvehicleagencydatesform': rentvehicleagencydatesform,
+            'customer': customer,
+            'contract': contract,
+
+        }
+    print('kerkrkkrk')
+    print(ctr_error)
+
+    return render(request, 'rental/register-contract.html', context)
