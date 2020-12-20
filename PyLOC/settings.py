@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
 
     'rental.apps.RentalConfig',
-    'gestion.apps.GestionConfig',
+    'manager.apps.ManagerConfig',
     
 ]
 

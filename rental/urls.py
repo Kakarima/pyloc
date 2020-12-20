@@ -19,6 +19,6 @@ urlpatterns = [
     path('conditions/', views.conditions, name='conditions'),
     path('partenaires/', views.partenaires, name='partenaires'),
     path('agences/', views.agences, name='agences'),
-    path('agences/agence/<int:id_agence>', views.agence, name='agence'),
+    path('agences/agence/<int:id_agency>', views.agence, name='agence'),
     path('confidentialite/', views.confidentialite, name='confidentialite'),
 ]

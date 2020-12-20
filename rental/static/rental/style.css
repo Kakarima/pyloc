@@ -540,6 +540,24 @@ footer a {
     font-size: 25px;
 }
 
+.liste-agences td, a{
+    color: white;
+    text-decoration: none;
+}
+
+#agence-list {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    opacity: 0.8;
+    height: 540px;
+    color: white;
+}
+
+#agence-list ul {
+    list-style-type: none;
+}
+
 /* FOOTER - CONSEILS */
 
 .conseils {
@@ -607,10 +625,10 @@ footer a {
 .confidentialite p {
     font-size: 18px;
 }
-.conservation tr, td {
+.conservation td {
     font-size: 15px;
     border-width: 1px;
-    /*border-style: solid;*/
+    border-style: solid;
     text-align: justify;
 }
 
@@ -643,6 +661,12 @@ footer a {
 .partners-image table {
     text-align: center;
     margin-left: 500px;
+}
+
+.partners-image table td {
+    text-align: center;
+    margin-left: 500px;
+    border-style: solid;
 }
 
 /* HEADER - SERVICES */

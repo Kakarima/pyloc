@@ -32,10 +32,10 @@ def agences(request):
 
 def agence(request, id_agency):
     try:
-        category = Category.objects.get(id=id_agency)
-    except Category.DoesNotExist:
+        lAgence = Agency.objects.get(id=id_agency)
+    except Agency.DoesNotExist:
         raise Http404
-    return render(request, 'rental/agence.html', {'agence': lAgence})
+    return render(request, 'rental/agence.html', {'agency': lAgence})
 
 def entreprise_categories(request):
     return render(request, 'rental/entreprise.html')

@@ -23,9 +23,9 @@
             </thead>
 
             <tbody>
-            {% for agency in agencies %}
+            {% for agency in agences %}
                 <tr>
-                    <td><a href="{% url 'rental:agences' id_agency=agency.id %}">{{ agency.name }}</a></td>
+                    <td><a href="{% url 'rental:agence' id_agency=agency.id %}">{{ agency.name }}</a></td>
                     <td>{{ agency.address }}</td>
                     <td>{{ agency.postal_code }}</td>
                     <td> {{ agency.city }}</td>

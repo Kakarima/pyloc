@@ -1,0 +1,54 @@
+{% extends "manager/base.html" %}
+
+{% block title %}Gestion de la liste des véhicules{% endblock %}
+
+{% block content %}
+    <div id="vehicule_presentation">
+        <div id="vehicule_actions">
+            <ul>
+                <li><a href="{%url 'manager:ajout_vehicule'%}">Ajouter un véhicule</a></li>
+            </ul>
+        </div>
+
+        <div id="vehicules_list">
+            <table id="Liste_des_véhicules" aria-label="Liste des véhicules">
+                <thead>
+                    <tr class="liste_vehicules">
+                        <td colspan="7">
+                            <h3>Liste des véhicules</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nom Agence</strong></td>
+                        <td><strong>Code</strong></td>
+                        <td><strong>Label</strong></td>
+                        <td><strong>Sample</strong></td>
+                        <td><strong>Marque</strong></td>
+                        <td><strong>Numéro d'enregistrement</strong></td>
+                        <td><strong>Modification?</strong></td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for vehicle in vehicules %}
+                    <tr>
+                        <td>{{ vehicle.agence.name }}</td>
+                        <td>{{ vehicle.category.code }}</td>
+                        <td>{{ vehicle.category.label }}</td>
+                        <td>{{ vehicle.category.sample }}</td>
+                        <td>{{ vehicle.brand }}</td>
+                        <td>{{ vehicle.registration }}</td>
+                        <td>
+                            <form id="suppression" method="post" action={% url 'manager:suppression_vehicule' vehicle.id %}>
+                                {% csrf_token %}
+                                <button type="submit">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

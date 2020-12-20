@@ -1,22 +1,24 @@
-{% extends "base.html" %}
+{% extends "./base.html" %}
 {% load static %}
+
 {% block content %}
 
-#Page de détail d'une agence
+<div id="agence-list">
+    <ul>
+        <li>
+            <strong>Nom :</strong> {{ agency.name }}
+        </li>
+        <li>
+            <strong>Adresse :</strong> {{ agency.address }}
+        </li>
+        <li>
+            <strong>Code postal :</strong> {{ agency.postal_code }}
+        </li>
+        <li>
+            <strong>Ville :</strong> {{ agency.city }}
+        </li>
+    </ul>
+</div>
 
-<ul>
-    <li>
-        Nom : {{ agency.name }}
-    </li>
-    <li>
-        Adresse : {{ agency.address }}
-    </li>
-    <li>
-        Code postal : {{ agency.postal_code }}
-    </li>
-    <li>
-        Ville : {{ agency.city }}
-    </li>
-</ul>
 
 {% endblock %}

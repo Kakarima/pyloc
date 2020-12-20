@@ -16,14 +16,14 @@
         <div id="icons">
             {% if not user.is_authenticated %}
                 <a href="{% url 'rental:edit_customer' %}?next={{ request.path }}">
-                    {{ request.User.first_name }} {{ request.User.last_name }}
+                    {{ request.user.first_name }} {{ request.user.last_name }}
                 </a>
                 <a href="{% url 'rental:login' %}?next={{ request.path }}">
                     <i class="fa fa-user" aria-hidden="true"></i>Se connecter
                 </a>
             {% else %}
                 <a href="{% url 'rental:logout' %}?next={{ request.path }}">
-                    <i class="fa fa-user" aria-hidden="true"></i>Se déconnecter
+                    {{ request.user.first_name }} {{ request.user.last_name }} <i class="fa fa-user" aria-hidden="true"></i>Se déconnecter
                 </a>
             {%  endif %}
         </div>

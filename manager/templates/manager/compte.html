@@ -1,0 +1,13 @@
+{% extends "manager/base.html" %}
+
+{% load static %}
+
+{% block title %} Compte Manager {% endblock %}
+
+{% block content %}
+
+<div id="home-main-content">
+   Hello {{ user.first_name }} {{ user.last_name }} !
+</div>
+
+{% endblock %}
