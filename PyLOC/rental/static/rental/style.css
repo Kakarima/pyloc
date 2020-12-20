@@ -332,3 +332,334 @@ footer a {
     margin-right: 50px;
     padding: 20px;
 }
+
+/* ENTREPRISE */
+
+.presentation-pyloc {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    opacity: 0.8;
+    height: 540px;
+}
+
+.presentation-pyloc p {
+    font-size: 18px;
+}
+
+.texte-pyloc {
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.texte-pyloc h1 {
+    color: goldenrod;
+    margin-top: 30px;
+    text-transform: uppercase;
+}
+
+.texte-pyloc h2 {
+    color: goldenrod;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+
+.texte-pyloc ul li {
+    list-style-type: none;
+    width: 300px;
+    float: left;
+    margin-bottom: 30px;
+    margin-right: 100px;
+}
+
+#step-1 * img
+{
+    background: white;
+    height: 80px;
+    border-radius: 18px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+#step-2 * img
+{
+    background: white;
+    height: 80px;
+    border-radius: 18px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+#step-3 * img
+{
+    background: white;
+    height: 80px;
+    border-radius: 18px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+/* LOGIN */
+
+#login-pyloc {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    opacity: 0.8;
+    height: 540px;
+    color: white;
+}
+
+#login-pyloc h1 {
+    color: goldenrod;
+    text-transform: uppercase;
+    font-size: 30px;
+    padding-top: 130px;
+}
+
+#login-pyloc * img {
+    background: white;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.login-and-registration {
+    font-size: 20px;
+}
+
+.login-and-registration a {
+    color: white;
+}
+
+.login-and-registration a:hover {
+    color: goldenrod;
+}
+
+/* REGISTRATION */
+
+.registration {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    opacity: 0.8;
+    color: white;
+    overflow-y: scroll;
+    height: 540px;
+}
+
+.registration h1 {
+    text-transform: uppercase;
+    color: goldenrod;
+    font-size: 30px;
+    padding-top: 30px;
+}
+
+.registration a {
+    color: white;
+}
+
+.registration a:hover {
+    color: goldenrod;
+}
+
+/* REGISTRATION DONE */
+
+.registration-done {
+    display: flex;
+    background-color: black;
+    opacity: 0.8;
+    color: white;
+    height: 540px;
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+.registration-done h1 {
+    font-size: 30px;
+    text-transform: uppercase;
+}
+.registration-done p a{
+    color: goldenrod;
+}
+
+
+/* FOOTER - CONTACT */
+
+.contactez-nous {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    opacity: 0.8;
+    height: 700px;
+    color: white;
+    padding-top: 30px;
+}
+
+.contactez-nous article {
+    width: 500px;
+    height: 380px;
+    float: left;
+    background-color: goldenrod;
+    margin-inside: 50px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.contactez-nous article h2 {
+    background-color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.contact-1 {
+    margin-top: 20px;
+}
+
+/* HEADER - AGENCES */
+
+.liste-agences {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    opacity: 0.8;
+    height: 540px;
+    color: white;
+}
+
+.titre-agences h3 {
+    text-transform: uppercase;
+    text-align: center;
+    color: goldenrod;
+}
+
+#liste_des_agences table th, td {
+    padding: 7px;
+    font-size: 25px;
+}
+
+/* FOOTER - CONSEILS */
+
+.conseils {
+    background-color: black;
+    opacity: 0.8;
+    height: 540px;
+    color: white;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
+}
+
+.conseils h1 {
+    color: goldenrod;
+    text-transform: uppercase;
+}
+
+/* FOOTER - CONDITIONS GENERALES */
+
+.conditions-generales {
+    background-color: black;
+    opacity: 0.8;
+    color: white;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    text-align: justify;
+    overflow-y: scroll;
+    height: 540px;
+}
+
+.conditions-generales h1 {
+    text-transform: uppercase;
+    color: goldenrod;
+    font-size: 30px;
+}
+
+.conditions-generales p {
+    font-size: 15px;
+}
+
+/* FOOTER - CONFIDENTIALITE */
+
+.confidentialite {
+    background-color: black;
+    opacity: 0.8;
+    color: white;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    text-align: justify;
+    overflow-y: scroll;
+    height: 540px;
+}
+
+.confidentialite h1 {
+    text-transform: uppercase;
+    color: goldenrod;
+    font-size: 30px;
+}
+
+.confidentialite p {
+    font-size: 18px;
+}
+.conservation tr, td {
+    font-size: 15px;
+    border-width: 1px;
+    /*border-style: solid;*/
+    text-align: justify;
+}
+
+/* FOOTER - PARTENAIRES */
+
+.partners {
+    background-color: black;
+    opacity: 0.8;
+    color: white;
+    height: 540px;
+    text-align: justify;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    overflow-y: scroll;
+}
+
+.partners h1 {
+    text-transform: uppercase;
+    color: goldenrod;
+}
+
+.partners-image h2 {
+    text-transform: uppercase;
+    color: goldenrod;
+    text-align: center;
+    font-size: 20px;
+}
+.partners-image table {
+    text-align: center;
+    margin-left: 500px;
+}
+
+/* HEADER - SERVICES */
+
+.services-section {
+    background-color: black;
+    opacity: 0.8;
+    color: white;
+    height: 540px;
+    text-align: justify;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 50px;
+    overflow-y: scroll;
+}
+
+.services-section h1 {
+    text-transform: uppercase;
+    color: goldenrod;
+}

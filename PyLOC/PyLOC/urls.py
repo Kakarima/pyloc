@@ -18,12 +18,20 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rental import views
-from gestion import views as gestion_views
+from manager import views as manager_views
 
+from django.conf.urls import url
+from django.contrib import admin
+from django.conf.urls.static import static
+from django.urls import path, include
+from django.views.generic import RedirectView
+from . import views, settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
     path('rental/', include('rental.urls')),
-    path('gestion/', include('gestion.urls')),
+    path('manager/', include('manager.urls')),
 ]
+
+#urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
