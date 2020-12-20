@@ -33,7 +33,8 @@ class Category(models.Model):
     code = models.CharField(max_length=1, unique=True)
     label = models.CharField(max_length=30)
     sample = models.CharField(max_length=30)
-    image = models.ImageField(upload_to='rental/photos', null=True, max_length=300)
+    #image = models.ImageField(upload_to='rental/photos', null=True, max_length=300)
+    image = models.CharField(max_length=50)
     description = models.TextField(null=True)
     nb_seats = models.IntegerField(default=5)
     nb_luggage = models.IntegerField(default=0)
@@ -107,7 +108,7 @@ class DrivingLicenceScan(models.Model):
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-
+    name = models.CharField(max_length=100, null=False)
     address = models.CharField(max_length=255, null=False)
     postal_code = models.CharField(max_length=10, null=False)
     city = models.CharField(max_length=255, null=False)
@@ -120,9 +121,7 @@ class Customer(models.Model):
     receiveAdds = models.BooleanField(default=True)
     creditCardNumber = models.CharField(max_length=16, null=True)
     creditCardValidity = models.CharField(max_length=4, null=True)
-
-    def __str__(self):
-        return f'Customer {self.user.username}'
+    email = models.EmailField(max_length=255, null=True)
 
 
 class Contract(models.Model):
