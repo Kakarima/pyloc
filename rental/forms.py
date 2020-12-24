@@ -2,8 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from .models import Category, Agency, Customer, Contract
-from .models import Customer
 from datetime import datetime
+
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
@@ -31,8 +31,6 @@ class CustomerEditForm(forms.ModelForm):
     class Meta:
         model = Customer
         fields = ('licence_scan', 'licence_number', 'address', 'postal_code', 'city', 'phone', 'age', 'user')
-
-#Partie Karima
 
 def get_VehiclesCategories():
     return tuple([(None, '')] + list(Category.objects.values_list('id', 'sample').distinct()))
@@ -75,7 +73,7 @@ class SearchVehicleDatesForm(forms.Form):
 class SearchVehicleCustomerForm(ModelForm):
     class Meta:
         model = Customer
-        fields = ['name', 'email', 'phone']
+        fields = ['name', 'phone', 'email']
 
 class RentVehicleAgencyDatesForm(forms.Form):
     date_input_formats = ['%Y-%m-%dT%H:%M',

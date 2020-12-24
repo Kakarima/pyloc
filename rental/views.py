@@ -4,14 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from .forms import SearchVehicleDatesForm, SearchVehicleCategoriesForm, SearchVehicleCustomerForm, SearchVehicleAgencyForm, RentVehicleAgencyDatesForm
 from .models import Category, Agency, Customer, Contract, Vehicle
-from .models import Category, Agency
 from .forms import UserRegistrationForm, UserEditForm, CustomerEditForm
 from django.db.models import Subquery
 
-def home(request):
-    agencies = Agency.objects.all
-    context = {'agency_list': agencies}
-    return render(request, 'rental/pyloc.html', context)
+#def home(request):
+    #agencies = Agency.objects.all
+    #context = {'agency_list': agencies}
+    #return render(request, 'rental/pyloc.html', context)
 
 def tourism_categories(request):
     categories = Category.objects.all()
@@ -100,13 +99,8 @@ def edit_customer(request):
                       {'user_form': user_form, 'customer_form': customer_form, 'next': next_page})
 
 
-#Fait par Karima
-
 def home(request):
     """ User home page"""
-    #
-    # agencyform = AgencyForm(prefix='exercice3_agences')
-    # categoryform = CategoryForm(prefix='exercice3_categories')
 
     # formulaire découpé en 4 parties
 
@@ -167,8 +161,8 @@ def home(request):
             .filter(agence=agency) \
             .exclude(id__in=Subquery(already_contracted.values('vehicle')))
         print('query = ' + str(vehicles.query))
-        for v in vehicles:
-            print('vehicle = ' + str(v))
+        for vehicle in vehicles:
+            print('vehicle = ' + str(vehicle))
 
         display_form = False
         display_results = True
@@ -202,12 +196,15 @@ def register_contract(request):
     print(rentvehicleagencydatesform.is_valid())
     print(rentvehicleagencydatesform.errors)
 
-    if rentvehicleagencydatesform.is_valid():
+    if (request.user == None or request.user.is_authenticated==False):
+        return redirect('/rental/registration')
+
+
+    elif rentvehicleagencydatesform.is_valid():
         contract = customer = ctr_error = agency = vehicle = None
         # récupération de l'agence
         agency_id = rentvehicleagencydatesform.cleaned_data.get('agency_id')
         agency = Agency.objects.get(id=agency_id)
-
 
         # récupération du véhicule
         vehicle_id = rentvehicleagencydatesform.cleaned_data.get('vehicle_id')

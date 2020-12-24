@@ -33,8 +33,7 @@ class Category(models.Model):
     code = models.CharField(max_length=1, unique=True)
     label = models.CharField(max_length=30)
     sample = models.CharField(max_length=30)
-    #image = models.ImageField(upload_to='rental/photos', null=True, max_length=300)
-    image = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='rental/photos', null=True, max_length=300)
     description = models.TextField(null=True)
     nb_seats = models.IntegerField(default=5)
     nb_luggage = models.IntegerField(default=0)
@@ -123,6 +122,9 @@ class Customer(models.Model):
     creditCardValidity = models.CharField(max_length=4, null=True)
     email = models.EmailField(max_length=255, null=True)
 
+    def __str__(self):
+        return f'Customer {self.user.username}'
+
 
 class Contract(models.Model):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
@@ -131,10 +133,10 @@ class Contract(models.Model):
 
     date_start = models.DateTimeField()
     date_end = models.DateTimeField()
-    scheduled_date_end = models.DateTimeField()
-    base_price = models.FloatField()
-    vat_rate = models.FloatField()
-    vat = models.FloatField()
-    total_price = models.FloatField()
-    remaining_price = models.FloatField()
+    scheduled_date_end = models.DateTimeField(null=True)
+    base_price = models.FloatField(null=True)
+    vat_rate = models.FloatField(null=True)
+    vat = models.FloatField(null=True)
+    total_price = models.FloatField(null=True)
+    remaining_price = models.FloatField(null=True)
     fully_paid = models.BooleanField(default=False)
