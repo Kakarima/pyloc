@@ -126,7 +126,7 @@ def home(request):
         # Agence, dates, modèle
         # récupération du modèle
 
-        category_id = searchvehiclecategoriesform.cleaned_data.get('sample')
+        category_id = searchvehiclecategoriesform.cleaned_data.get('label')
         category = Category.objects.get(id=category_id)
         print('category = ' + str(category))
 
