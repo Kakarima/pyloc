@@ -105,6 +105,7 @@ class DrivingLicenceScan(models.Model):
     path = models.FilePathField()
     number = models.CharField(max_length=12, null=True)
 
+
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=100, null=False)
