@@ -1,4 +1,4 @@
-{% extends "./base.html" %}
+{% extends "rental/base.html" %}
 
 {% load static %}
 
@@ -19,7 +19,7 @@
                     <img src="{% static 'rental/icones/Personne.jpg' %}" alt="icone-utilisateur"/> {{ category.nb_seats }} place{{ category.nb_seats|pluralize }}
                 </span>
                 <span>
-                    <img src="{% static 'rental/icones/Bagage.png' %}" alt=""icone-bagages/> {{ category.nb_luggage }} bagage{{ category.nb_luggage|pluralize }}
+                    <img src="{% static 'rental/icones/Bagage.png' %}" alt="icone-bagages"/> {{ category.nb_luggage }} bagage{{ category.nb_luggage|pluralize }}
                 </span>
                 <br><br>
                 <span>
