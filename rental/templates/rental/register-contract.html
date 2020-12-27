@@ -4,16 +4,8 @@
 
 {% block content %}
 
-    <div id="error" style="color: red;">
-    {% if ctr_error == '' %}
-        <p>Votre contrat de location n°{{ contract.id }} du {{ booking_date_start }} au {{ booking_date_end }} pour une {{ vehicle.category.sample }} pris auprès de l'agence {{ agency.name }} a bien été enregistré.</p><br />
-    {% endif %}
-    </div>
-
     <div id="result" style="color: green;">
-    {% if ctr_error != '' %}
-        <p>Un contrat existe déjà, donc vous ne pouvez pas réserver à cette date. Veuillez modifier les champs pour effectuer une réservation.</p>
-    {% endif %}
+        <p>Votre contrat de location n°{{ contract.id }} du {{ booking_date_start }} au {{ booking_date_end }} pour une {{ vehicle.category.sample }} pris auprès de l'agence {{ agency.name }} a bien été enregistré.</p><br />
     </div>
 
 {% endblock %}
