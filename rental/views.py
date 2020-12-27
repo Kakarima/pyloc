@@ -111,11 +111,7 @@ def edit_customer(request):
 
 def home(request):
     """ User home page"""
-    if request.GET.get("edit") is None:
-        edit = False
-    else:
-        edit = request.GET.get("edit")
-    if request.user.is_authenticated is True and not edit:
+    if request.user.is_authenticated is True:
         try:
             contract = Contract.objects.all().get(customer_id=request.user.customer.id)
         except Contract.DoesNotExist:
@@ -123,7 +119,6 @@ def home(request):
 
         if contract is not None:
             context = {
-                'ctr_error': '',
                 'agency': contract.agence,
                 'vehicle': contract.vehicle,
                 'booking_date_start': contract.date_start,
@@ -138,12 +133,12 @@ def home(request):
     searchvehicledatesform = SearchVehicleDatesForm(post, prefix='search_dates')
     searchvehiclecategoriesform = SearchVehicleCategoriesForm(post, prefix='search_vehicle_category')
     searchvehicleagencyform = SearchVehicleAgencyForm(post, prefix='search_agency')
-    if post is None and request.user.is_authenticated :
+    if post is None and request.user.is_authenticated:
         searchvehiclecustomerform = SearchVehicleCustomerForm(prefix='search_customer', initial={
             'name': request.user.username,
             'email': request.user.email,
             'phone': request.user.customer.phone})
-    else :
+    else:
         searchvehiclecustomerform = SearchVehicleCustomerForm(post, prefix='search_customer')
 
     display_form = True
@@ -155,15 +150,15 @@ def home(request):
 
     # Si l'ensemble du formulaire est valide
     if searchvehiclecategoriesform.is_valid() \
-            and searchvehicledatesform.is_valid() \
-            and searchvehiclecustomerform.is_valid() \
-            and searchvehicleagencyform.is_valid():
+        and searchvehicledatesform.is_valid() \
+        and searchvehiclecustomerform.is_valid() \
+        and searchvehicleagencyform.is_valid():
 
         # On vérifie la disponibilité de véhicules demandés pour les critères indiqués
         # Agence, dates, modèle
         # récupération du modèle
 
-        category_id = searchvehiclecategoriesform.cleaned_data.get('label')
+        category_id = searchvehiclecategoriesform.cleaned_data.get('sample')
         category = Category.objects.get(id=category_id)
         print('category = ' + str(category))
 
@@ -184,7 +179,7 @@ def home(request):
         customer_name = searchvehiclecustomerform.cleaned_data.get('name')
         customer_email = searchvehiclecustomerform.cleaned_data.get('email')
         customer_phone = searchvehiclecustomerform.cleaned_data.get('phone')
-        customer = Customer(name=customer_name, email=customer_email, phone=customer_phone)
+        customer = {'name': customer_name, 'email': customer_email, 'phone': customer_phone}
 
         # liste des contrats déjà conclus aux dates indiquées
         # (dont la date de fin est postérieure à la date de début de la location recherchée) pour l'agence souhaitée
@@ -237,6 +232,7 @@ def register_contract(request):
     print(rentvehicleagencydatesform.is_valid())
     print(rentvehicleagencydatesform.errors)
 
+    contract = agency = vehicle = None
     customer = None
     user_exist = False
     if request.user is None or not request.user.is_authenticated:
@@ -263,7 +259,7 @@ def register_contract(request):
                                 '&next=/rental')
 
     if rentvehicleagencydatesform.is_valid():
-        contract = ctr_error = agency = vehicle = None
+
         if customer is None:
             if request.user.is_authenticated:
                 customer = Customer.objects.all().get(id=request.user.customer.id)
@@ -285,7 +281,6 @@ def register_contract(request):
         # on récupère la date de début souhaitée pour la location
 
         # création d'un compte client
-        ctr_error = ''
 
         # variable customer
         if customer is None:
@@ -303,16 +298,4 @@ def register_contract(request):
     if user_exist:
         return redirect('/rental/login?next=/rental')
 
-    # context
-    context = {
-        'ctr_error': ctr_error,
-        'agency': agency,
-        'vehicle': vehicle,
-        'booking_date_start': booking_date_start,
-        'booking_date_end': booking_date_end,
-        'rentvehicleagencydatesform': rentvehicleagencydatesform,
-        'customer': customer,
-        'contract': contract,
-
-    }
-    return render(request, 'rental/register-contract.html', context)
+    return redirect('/rental')
