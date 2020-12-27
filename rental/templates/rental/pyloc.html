@@ -19,7 +19,7 @@
                 <table>
                     {% for vehicle in vehicles %}
                         <tr>
-                            <td>{{ category.sample }} immatriculé {{ vehicle.registration_number }}</td>
+                            <td>{{ category.label }} immatriculé {{ vehicle.registration }}</td>
                             <td>
                                 <form id="rent_vehicle_{{ forloop.counter }}" action="{%url 'rental:register_contract'%}" method="POST">
                                     {% csrf_token %}
@@ -55,8 +55,8 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            {{ searchvehiclecategoriesform.sample.errors }}
-                            Choisissez le mod&egrave;le : {{ searchvehiclecategoriesform.sample }}
+                            {{ searchvehiclecategoriesform.label.errors }}
+                            Choisissez le mod&egrave;le : {{ searchvehiclecategoriesform.label }}
                         </td>
                     </tr>
                     <tr>
