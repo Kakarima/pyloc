@@ -33,10 +33,9 @@ class CustomerEditForm(forms.ModelForm):
         model = Customer
         fields = ('licence_scan', 'licence_number', 'address', 'postal_code', 'city', 'phone', 'age', 'user')
 
-        
+
 def get_VehiclesCategories():
-    return tuple([(None, '')] + list(Category.objects.values_list('id', 'label').distinct()))
- main
+    return tuple([(None, '')] + list(Category.objects.values_list('id', 'sample').distinct()))
 
 
 def get_agencies():
@@ -51,10 +50,10 @@ class SearchVehicleAgencyForm(ModelForm):
 
 
 class SearchVehicleCategoriesForm(ModelForm):
-            class Meta:
-                model = Category
-                fields = ['label']
-                widgets = {'label': forms.Select(choices=get_VehiclesCategories())}
+    class Meta:
+        model = Category
+        fields = ['sample']
+        widgets = {'sample': forms.Select(choices=get_VehiclesCategories())}
 
 
 class DateTimeLocalInput(forms.DateTimeInput):
@@ -77,10 +76,10 @@ class SearchVehicleDatesForm(forms.Form):
                                    input_formats=date_input_formats)
 
 
-class SearchVehicleCustomerForm(ModelForm):
-    class Meta:
-        model = Customer
-        fields = ['name', 'phone', 'email']
+class SearchVehicleCustomerForm(forms.Form):
+    name = forms.CharField(required=True, max_length=100)
+    phone = forms.CharField(required=True, max_length=255)
+    email = forms.EmailField(required=True, max_length=255)
 
 
 class RentVehicleAgencyDatesForm(forms.Form):
