@@ -108,7 +108,6 @@ class DrivingLicenceScan(models.Model):
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=100, null=False)
     address = models.CharField(max_length=255, null=False)
     postal_code = models.CharField(max_length=10, null=False)
     city = models.CharField(max_length=255, null=False)
@@ -121,7 +120,6 @@ class Customer(models.Model):
     receiveAdds = models.BooleanField(default=True)
     creditCardNumber = models.CharField(max_length=16, null=True)
     creditCardValidity = models.CharField(max_length=4, null=True)
-    email = models.EmailField(max_length=255, null=True)
 
     def __str__(self):
         return f'Customer {self.user.username}'

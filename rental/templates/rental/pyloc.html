@@ -7,7 +7,9 @@
             <h1>Louez en toute sérénité</h1>
         </div>
         <div>
-            {% if display_results %}
+            {%  if display_results and already_contracted.count > 0 and vehicles.count == 0 %}
+                Un contrat existe déjà sur le modèle de véhicule sélectionné, vous ne pouvez pas réserver à cette date. Veuillez modifier les champs pour effectuer une réservation.
+            {% elif display_results %}
                 {{ vehicles.count }} véhicules trouvés suite à votre recherche
             {% endif %}
         </div>
@@ -75,24 +77,25 @@
                             {{ searchvehicledatesform.date_end }}
                         </td>
                     </tr>
+
                         <tr>
                             <td colspan="2">
                                 {{ searchvehiclecustomerform.name.errors }}
                                 Nom : {{ searchvehiclecustomerform.name }}
                             </td>
                         </tr>
-                    <tr>
-                        <td colspan="2">
-                            {{ searchvehiclecustomerform.email.errors }}
-                            Email : {{ searchvehiclecustomerform.email }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            {{ searchvehiclecustomerform.phone.errors }}
-                            T&eacute;l&eacute;phone : {{ searchvehiclecustomerform.phone }}
-                        </td>
-                    </tr>
+                        <tr>
+                            <td colspan="2">
+                                {{ searchvehiclecustomerform.email.errors }}
+                                Email : {{ searchvehiclecustomerform.email }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                {{ searchvehiclecustomerform.phone.errors }}
+                                T&eacute;l&eacute;phone : {{ searchvehiclecustomerform.phone }}
+                            </td>
+                        </tr>
                     <tr>
                         <td colspan="2">
                             <input type="submit" name="btn_submit" value="Valider"/>
