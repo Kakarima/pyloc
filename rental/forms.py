@@ -52,8 +52,8 @@ class SearchVehicleAgencyForm(ModelForm):
 class SearchVehicleCategoriesForm(ModelForm):
     class Meta:
         model = Category
-        fields = ['sample']
-        widgets = {'sample': forms.Select(choices=get_VehiclesCategories())}
+        fields = ['label']
+        widgets = {'label': forms.Select(choices=get_VehiclesCategories())}
 
 
 class DateTimeLocalInput(forms.DateTimeInput):

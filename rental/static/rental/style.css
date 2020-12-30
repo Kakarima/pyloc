@@ -26,16 +26,16 @@ body {
 
 /* HEADER */
 
-header {
-    display: flex;
-    justify-content: space-between; /*Les éléments sont répartis équitablement ; Le bord du premier est aligné sur le début du conteneur et la fin du dernier est alignée sur la fin du conteneur */
-    background-color: white;
-}
+/*header {*/
+/*    display: flex;*/
+/*    justify-content: space-between; !*Les éléments sont répartis équitablement ; Le bord du premier est aligné sur le début du conteneur et la fin du dernier est alignée sur la fin du conteneur *!*/
+/*    background-color: white;*/
+/*}*/
 
-header a {
-    text-decoration: none;
-    color: black
-}
+/*header a {*/
+/*    text-decoration: none;*/
+/*    color: black*/
+/*}*/
 
 #main-title {
     font-size: 65px;
@@ -56,16 +56,25 @@ header a {
 }
 
 #icons {
-    margin-top: 15px;
-    display: flex;
-    justify-content: right;
-    padding-right: 8px;
+    /*margin-top: 15px;*/
+    /*display: flex;*/
+    /*justify-content: right;*/
+    /*padding-right: 8px;*/
     font-size: 20px;
     list-style-type: none;
 }
 
+#icons a{
+    color:black;
+}
+
 .fa {
     margin-right: 10px;
+    color:black;
+}
+
+.fa-user{
+    color:black;
 }
 
 #main-menu {
@@ -561,21 +570,22 @@ footer a {
 
 /* FOOTER - CONSEILS */
 
-.conseils {
-    background-color: black;
-    opacity: 0.8;
-    height: 540px;
-    color: white;
-    padding-top: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: justify;
-}
+/*.conseils {*/
+/*    background-color: black;*/
+/*    opacity: 0.8;*/
+/*    height: 540px;*/
+/*    color: white;*/
+/*    padding-top: 50px;*/
+/*    padding-left: 20px;*/
+/*    padding-right: 20px;*/
+/*    text-align: justify;*/
+/*}*/
 
 .conseils h1 {
     color: goldenrod;
     text-transform: uppercase;
 }
+
 
 /* FOOTER - CONDITIONS GENERALES */
 
@@ -687,6 +697,12 @@ footer a {
 .services-section h1 {
     text-transform: uppercase;
     color: goldenrod;
+}
+
+.title{
+    color: goldenrod;
+    font-family: 'Lobster';
+
 }
 
 

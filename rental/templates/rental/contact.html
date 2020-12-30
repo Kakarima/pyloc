@@ -1,32 +1,75 @@
-{% extends "rental/base.html" %}
+{% extends './base.html' %}
 
 {% load static %}
 
 {% block title %}Contact{% endblock %}
 
 {% block content %}
-    <div class="contactez-nous">
-        <article>
-            <div class="contact-1">
-                <h2>Location en cours & Location à venir</h2>
-                <img src="{% static 'rental/icones/rental_contact.png' %}" alt="icone-contact-résa"/>
-                <p>Si vous rencontrez des problèmes concernant votre location en cours ou votre location à venir,
-                    notre service réservation se tient à votre disposition pour répondre à vos questions.</p>
-                <p>Téléphone : +33 988 598 528 <br/> Email : reservations@pyloc.fr</p>
-                <p>Du lundi à samedi : 9h00 - 19h00 <br/> Dimanche et jours fériés : fermés </p>
+    <div class="container content content-dark-font">
+        <div class="d-flex flex-column flex-md-row justify-content-between p-2">
+            <div class="col-md-5 card p-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Location en cours & Location à venir</h2>
+                    <div class="bg-light text-center">
+                        <img class="img-fluid align-self-center" src="{% static 'rental/icones/rental_contact.png' %}" alt="icone-contact-résa"></div>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
             </div>
-        </article>
-
-        <article>
-            <div class="contact-2">
-                <h2>Location passée</h2>
-                <img src="{% static 'rental/icones/cs_contact.png' %}" alt="icone-contact"/>
-                <p>Nous vous remercions d'avoir choisi PYLOC et de nous avoir fait confiance ! Notre équipe du service client
-                    se fera un plaisir de répondre à toutes les questions que vous pourriez avoir une fois le véhicule restituée
-                    à l'agence.</p>
-                <p>Téléphone : +33 988 478 028 <br/> Email : clients@pyloc.fr</p>
-                <p>Du lundi à samedi : 9h00 - 16h00 <br/> Dimanche et jours fériés : fermés </p>
+            <div class="col-md-5 card p-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Location passée</h2>
+                    <div class="bg-light text-center">
+                        <img class="img-fluid align-self-center" src="{% static 'rental/icones/rental_contact.png' %}" alt="icone-contact-résa"></div>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
             </div>
-        </article>
+        </div>
     </div>
 {% endblock %}
+<div class="contactez-nous">
+
+    <article>
+        <div class="contact-1">
+            <h2>Location en cours & Location à venir</h2>
+            <img src="{% static 'rental/icones/rental_contact.png' %}" alt="icone-contact-résa"/>
+            <p>Si vous rencontrez des problèmes concernant votre location en cours ou votre location à venir,
+                notre service réservation se tient à votre disposition pour répondre à vos questions.</p>
+            <p>Téléphone : +33 988 598 528 </br> Email : reservations@pyloc.fr</p>
+            <p>Du lundi à samedi : 9h00 - 19h00 </br> Dimanche et jours fériés : fermés </p>
+        </div>
+    </article>
+
+    <article>
+        <div class="contact-2">
+            <h2>Location passée</h2>
+            <img src="{% static 'rental/icones/cs_contact.png' %}" alt="icone-contact"/>
+            <p>Nous vous remercions d'avoir choisi PYLOC et de nous avoir fait confiance ! Notre équipe du service
+                client
+                se fera un plaisir de répondre à toutes les questions que vous pourriez avoir une fois le véhicule
+                restituée
+                à l'agence.</p>
+            <p>Téléphone : +33 988 478 028 </br> Email : clients@pyloc.fr</p>
+            <p>Du lundi à samedi : 9h00 - 16h00 </br> Dimanche et jours fériés : fermés </p>
+        </div>
+    </article>
+</div>

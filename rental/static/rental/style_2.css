@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Comfortaa:wght@300;400;500;600;700&family=Lato:ital,wght@0,300;0,400;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+.card-img{
+    height:100%
+}
+
+.menu a:hover {
+    background: linear-gradient(black, darkgray);
+    color: white;
+    border-radius: 10px;
+}
+main{
+    padding: unset;
+    margin: unset;
+background-image: url('../rental/images/Location.webp') !important;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+#slogan{
+    margin: unset;
+    padding: unset;
+    font-weight: bold;
+    font-style: italic;
+    font-size: xx-large;
+}
+
+#form_resa{
+    background: linear-gradient(black,grey);
+    opacity: 0.8;
+    border-radius: 10px;
+    /*padding: 10px;*/
+    /*width:40vw ;*/
+    /*height: 75vh;*/
+    color: white;
+}
+/*@media (min-width: 992px) {*/
+/*    #form_resa {*/
+/*        background: linear-gradient(black, grey);*/
+/*        opacity: 0.8;*/
+/*        border-radius: 10px;*/
+/*        !*padding: 10px;*!*/
+/*        !*width:40vw ;*!*/
+/*        height: 75vh;*/
+/*        color: white;*/
+/*    }*/
+
+/*body{
+    font-family: 'Cabin';
+    baground-image: url('../img/peugeot-2008-feature.jpg')!important;
+}*/
+
+/*a:hover{*/
+/*    text-decoration: none;*/
+/*    background: linear-gradient(black, darkgray);*/
+/*    color: white;*/
+/*    padding: 10px;*/
+/*    border-radius: 10px;*/
+
+/*}*/
+/* ------------------NAVBAR------------------*/
+
+#main-title:hover{
+    background: none!important;
+    color: goldenrod;
+}
+
+#main-title-2 {
+    font-size: 30px;
+    padding-left: 30px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    font-family: 'Lobster', arial, serif;
+    color: black;
+}
+
+a#main-title-2:hover{
+    text-decoration: none!important;
+    color: goldenrod;
+}
+
+nav a{
+    font-size: 20px;
+    text-transform: uppercase!important;
+    color: black;
+}
+
+
+.navbar-brand{
+    font-size: 20px;
+    text-transform: uppercase!important;
+    color: black;
+}
+
+ a.navbar-brand:hover{
+    text-decoration: none!important;
+    background: linear-gradient(black, darkgray)!important;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;!important;
+}
+
+a.item-menu:hover{
+    text-decoration: none!important;
+    background: linear-gradient(black, darkgray)!important;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;!important;
+}
+
+/*---------------Main content--------------*/
+.main-content{
+    background-color: #0c5460;
+}
+
+.content{
+    min-height: 65vh;
+}
+
+/*----------------FOOTER---------------*/
+.footer{
+    background: linear-gradient(black, darkgray)!important;
+    color: white !important;
+}
+
+footer a{
+    text-decoration: none!important;
+    color: white!important;
+}
+
+footer a:hover{
+    text-decoration: none!important;
+    color: goldenrod!important;
+}
+
+/*---------Tourisme----------*/
+
+.card-body{
+    background : none;
+    opacity: 0.8;
+
+
+}
+
+.card{
+
+    border-radius: 10px;
+    background : rgba(0,0,0,0.8);
+}
+
+#tourisme-vehicule{
+    background: linear-gradient(black,grey);
+    overflow-y: scroll;
+    height: 65vh;
+
+}
+
+@media (min-width: 992px) {
+    #tourisme-vehicule {
+        background: linear-gradient(black, grey);
+
+    }
+
+
+    }
+
+/*----------------------TOURISM-CATEGORY-DETAILS---------------*/
+ #content-category{
+     background: rgba(0,0,0,0.8);
+     border-radius: 10px;
+     color: white;
+
+ }
+
+@media (min-width:1300px) {
+    #content-category{
+        height: 65vh;
+          }
+    }
+
+#title-details{
+    color: goldenrod;
+    font-size: xx-large;
+
+}
+ .icon-detail{
+     background: rgba(255,255,255,0.8);
+ }
+
+ em{
+     color:goldenrod;
+ }
+
+/*---------------SERVICE---------------*/
+
+#content-service{
+    background: rgba(0,0,0,0.8);
+    border-radius: 10px;
+    color: white;
+
+}
+
+@media (min-width:600px) {
+    #content-service{
+        height: 65vh;
+    }
+}
+
+/*---------------------Resultats Rechecher-----------------*/
+
+.results{
+    background: rgba(0,0,0,0.8);
+    color: white;
+    border-radius: 10px;
+}
+
+.card-title{
+    color: goldenrod;
+}
+
+#nombre_resultat{
+
+    color: limegreen;
+}
+
+.table td{
+    color:white;
+}
+
+@media (min-width:768px) {
+   #content-index{
+    height: 70vh;
+}
+}
+
+.register-link{
+    color:goldenrod!important;
+}
+
+.list-group-item{
+    background: none;
+}
+
+/*---------------------Register-Contract------------------*/
+.recap{
+    font-weight: bolder;
+    color: goldenrod;
+}
+
+#order-recap{
+    background: rgba(255,252,255,1) ;
+    border: medium goldenrod;
+}
+
+@media (min-width:900px){
+    .content{
+        min-height: 70vh;
+    }
+}
+
+#title{
+    font-size:xx-large;
+    text-justify: auto;
+    text-align: center;
+    color: goldenrod!important;
+}
+
+.content-dark-font{
+    background: rgba(0,0,0,0.8);
+}
+
+#vehicle-count li{
+    background: #dce0c4;
+
+}
+
+.list-entreprise h2{
+    color: goldenrod;
+}

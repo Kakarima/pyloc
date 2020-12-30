@@ -6,34 +6,39 @@
 
 
 {% block content %}
-    <div class="liste-agences">
-        <table id="Liste_des_agences" aria-label="Liste des agences">
-            <thead>
-                <tr class="titre-agences">
-                    <td colspan="2">
-                        <h3>Liste des agences</h3>
+    <div class="container conseils content-dark-font content justify-content-center">
+
+        <div class="text-center justify-content-center p-2">
+            <h1 >Liste des agences</h1>
+        </div>
+        <div class="justify-content-center p-2">
+
+            <table class="table table-borderless  table-responsive table-striped text-white justify-content-center"
+                   aria-label="Liste des agences">
+                <thead class="font-weight-bold text-white">
+                <tr>
+                    <th scope="col"><strong>Nom Agence</strong></th>
+                    <th scope="col"><strong>Adresse</strong></th>
+                    <th scope="col"><strong>Code Postal</strong></th>
+                    <th scope="col"><strong>Ville</strong>
                     </td>
                 </tr>
-                <tr>
-                    <td><strong>Nom Agence</strong></td>
-                    <td><strong>Adresse</strong></td>
-                    <td><strong>Code Postal</strong></td>
-                    <td><strong>Ville</strong></td>
-                </tr>
-            </thead>
+                </thead>
 
-            <tbody>
-            {% for agency in agences %}
-                <tr>
-                    <td><a href="{% url 'rental:agence' id_agency=agency.id %}">{{ agency.name }}</a></td>
-                    <td>{{ agency.address }}</td>
-                    <td>{{ agency.postal_code }}</td>
-                    <td> {{ agency.city }}</td>
-                </tr>
-            {% endfor %}
+                <tbody>
+                {% for agency in agences %}
+                    <tr>
+                        <th scope="row">{{ agency.name }}</th>
+                        <td>{{ agency.address }}</td>
+                        <td>{{ agency.postal_code }}</td>
+                        <td> {{ agency.city }}</td>
+                        <td><a class="register-link" href="{% url 'rental:agence' id_agency=agency.id %}">Voir
+                            Détails</a></td>
+                    </tr>
+                {% endfor %}
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
-
 {% endblock %}

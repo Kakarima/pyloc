@@ -1,4 +1,4 @@
-{% extends "rental/base.html" %}
+{% extends "./base.html" %}
 
 {% load static %}
 
@@ -7,38 +7,48 @@
 <link rel="stylesheet" href="{% static 'rental/style.css' %}"/>
 
 {% block content %}
-   <div class="presentation-pyloc">
-       <div class="texte-pyloc">
-           <h1>Rendre la mobilité accessible, plus facile et plus responsable grâce au partage !</h1>
-           <p>Une nouvelle destination et aventure? Cela est possible grâce à PYLOC...</p>
-           <p>Louer une voiture est une des façons de voyager les plus répandues, que ce soit pour un voyage d'affaires
-            ou de vacances entre ami(e)s ou entre famille.</p>
-           <p>Notre mission est de fournir à nos clients, une expérience agréable, du premier clic de la souris jusqu'à la
-               remise des clés.</p>
-           <ul>
-               <li id="step-1">
-                   <span>
-                       <img src="{% static 'rental/icones/images.png' %}" alt="icone-agence"/>
-                   </span>
-                   <h2>Louez votre voiture partout</h2>
-                   <p>Réservez votre voiture avec l'agence de location qui vous correspond</p>
-               </li>
-               <li id="step-2">
-                   <span>
-                       <img src="{% static 'rental/icones/car-rent.png' %}" alt="icone-voiture"/>
-                   </span>
-                   <h2>Pour toutes les occasions</h2>
-                   <p>Mariage, déménagement, vacances...Quels que soient vos besoins, louez un véhicule sur-mesure</p>
-               </li>
-               <li id="step-3">
-                   <span>
-                       <img src="{% static 'rental/icones/prix.png' %}" alt="icone-prix"/>
-                   </span>
-                   <h2>A des prix imbattables</h2>
-                   <p>Avec notre garantie meilleur prix, nous nous engageons à descendre notre tarif au
-                        niveau de la concurrence si vous trouvez moins cher ailleurs, n'est pas génial?</p>
-               </li>
-           </ul>
-       </div>
-   </div>
+    <div class="container conseils content-dark-font">
+        <div class="text-center text-uppercase">
+            <h1>Rendre la mobilité accessible, plus facile et plus responsable grâce au partage !</h1>
+        </div>
+        <div class="text-center text-justify text-white">
+            <p>Une nouvelle destination et aventure? Cela est possible grâce à PYLOC...</p>
+            <p>Louer une voiture est une des façons de voyager les plus répandues, que ce soit pour un voyage d'affaires
+                ou de vacances entre ami(e)s ou entre famille.</p>
+            <p>Notre mission est de fournir à nos clients, une expérience agréable, du premier clic de la souris jusqu'à
+                la
+                remise des clés.</p>
+        </div>
+        <div class="d-flex flex-column flex-md-row ">
+            <div class="p-2">
+                <div class="d-flex flex-column text-white list-entreprise">
+                    <div class="p-2"><img class="img-fluid rounded-circle "
+                                          src="{% static 'rental/icones/images.png' %}" alt="icone-agence"/></div>
+                    <div class="p-2 text-left"><h2>Louez votre voiture partout</h2></div>
+                    <div class="p-2 text-justify">Réservez votre voiture avec l'agence de location qui vous
+                        correspond.
+                    </div>
+                </div>
+            </div>
+            <div class="p-2">
+                <div class="d-flex flex-column text-white list-entreprise">
+                    <div class="p-2"><img class="img-thumbnail rounded-circle width: 20px"
+                                          src="{% static 'rental/icones/car-rent.png' %}" alt="icone-voiture"/></div>
+                    <div class="p-2 text-left"><h2>Pour toutes les occasions</h2></div>
+                    <div class="p-2 text-justify">Mariage, déménagement, vacances...Quels que soient vos besoins, louez
+                        un véhicule sur-mesure
+                    </div>
+                </div>
+            </div>
+                <div class="p-2">
+                    <div class="d-flex flex-column text-white list-entreprise">
+                        <div class="p-2"><img src="{% static 'rental/icones/prix.png' %}" alt="icone-prix"/></div>
+                        <div class="p-2 text-left"><h2>A des prix imbattables</h2></div>
+                        <div class="p-2 text-justify">Avec notre garantie meilleur prix, nous nous engageons à descendre
+                            notre tarif au niveau de la concurrence si vous trouvez moins cher ailleurs, n'est pas
+                            génial?
+                        </div>
+                    </div>
+                </div>
+            </div>
 {% endblock %}

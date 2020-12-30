@@ -1,48 +1,61 @@
-{% extends "rental/base.html" %}
+{% extends './base.html' %}
 
 {% block title %}Service{% endblock %}
 
 {% load static %}
 
 {% block content %}
-    <div class="services-section">
-        <h1>Nos services</h1>
-        <table>
-            <tr>
-                <td><h2>Enregistrement en ligne</h2></td>
-                <td><h2>Aller simple</h2></td>
-                <td><h2>Applications</h2></td>
-            </tr>
+    <div class="container" id="content-service">
+        <div class="row justify-content-center " id="services-section">
+            <div id="title-details">Nos services</div>
+        </div>
+        <div class="row justify-content-center p-2">
 
-            <tr>
-                <td>
-                    Le service d'enregistrement en ligne nous permet de préparer votre contrat de location
+            <div class="col-md-3 col-sm-6 align-self-center">
+                <img class="img-fluid" src="{% static 'rental/images/services/en_ligne.png' %}" alt="en-ligne"/>
+            </div>
+            <div class="col-md-8">
+                <div class="text-md-left text-center font-weight-bold "><h4>Enregistrement en ligne</h4></div>
+                <div class=" text-justify ">
+                    Le service d'enregistrement en ligne nous permet de préparer votre contrat de
+                    location
                     avant même votre arrivée au comptoir. Une fois ce service activée en ligne, nous pourrons
                     utiliser les détails de votre réservation.<br/><br/>
                     Ainsi, en réduisant la partie administrative quand vous êtes au comptoir, vous pourrez
                     être sur la route plus rapidement.
-                </td>
-                <td>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center p-2">
+            <div class="col-md-8">
+                <div class=" text-md-right text-center font-weight-bold ">
+                    <h4>Aller simple</h4>
+                </div>
+                <div class=" text-justify align-self-center">
                     Vous avez besoin d'un véhicule uniquement pour un aller simple ? PYLOC vous propose de louer
                     un véhicule dans une agence et de le déposer dans une autre. Vous avez une totale liberté.
-                </td>
-                <td>
-                     Vous pouvez dès à présent réserver votre véhicule sur votre smartphone via notre
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 align-self-center">
+                <img class="img-fluid" src="{% static 'rental/images/services/aller_simple.png' %}" alt="aller_simple"/>
+            </div>
+        </div>
+        <div class="row justify-content-center p-2">
+            <div class="col-md-3 col-sm-6 align-self-center">
+                <img class="img-fluid" src="{% static 'rental/images/services/applications.png' %}" alt="applications"/>
+            </div>
+            <div class="col-md-8">
+                <div class="text-md-left text-center font-weight-bold ">
+                    <h4>Applications</h4>
+                </div>
+                <div class=" text-justify align-self-center">
+                    Vous pouvez dès à présent réserver votre véhicule sur votre smartphone via notre
                     application et notre site mobile. Réservez partout où vous voulez et à n'importe
                     quel moment depuis iOS ou Android.
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="{% static 'rental/images/services/en_ligne.png' %}" alt="en-ligne"/>
-                </td>
-                <td>
-                    <img src="{% static 'rental/images/services/aller_simple.png' %}" alt="aller_simple"/>
-                </td>
-                <td>
-                    <img src="{% static 'rental/images/services/applications.png' %}" alt="applications"/>
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+
+        </div>
     </div>
+
 {% endblock %}

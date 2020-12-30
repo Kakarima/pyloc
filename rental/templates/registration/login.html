@@ -1,29 +1,46 @@
-{% extends "rental/base.html" %}
+{% extends 'rental/base.html' %}
+
+{% load crispy_forms_tags %}
+
 {% load static %}
+
 {% block title %}Login visiteur{% endblock %}
 
 {% block content %}
-    <div id="login-pyloc">
-        <div class="login-and-registration">
-           <h1>Connexion visiteur</h1>
-            <div class="login-form">
-                {% if form.errors %}
-                    <p>
-                        Le nom d'utilisateur et le mot de passe ne correspondent pas.
-                        Merci d'essayer de nouveau...
-                    </p>
-                {% endif %}
-                <form action="{% url 'rental:login' %}" method="post">
-                    {{ form.as_p }}
+    <div class="container  content content-dark-font">
+
+        <div class="row justify-content-center" id="title">
+            <h1 class="p-2">Connexion visiteur</h1>
+        </div>
+
+        {% if form.errors %}
+            <div class="row justify-content-centertext-white">
+                <p>
+                    Le nom d'utilisateur et le mot de passe ne correspondent pas.
+                    Merci d'essayer de nouveau...
+                </p>
+            </div>
+        {% endif %}
+        <div class="row justify-content-center">
+            <form class="text-white p-2" action="{% url 'rental:login' %}" method="post">
+
+
+                        {{ form|crispy }}
+
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ next }}"/>
-                    <p><input type="submit" value="LOGIN"></p>
-                </form>
-            </div>
-            <p>Pas de compte ? Vous pouvez vous
-                <a href="{% url 'rental:registration' %}?next={{ next }}"> enregistrer</a>
-                en remplissant un simple formulaire !
-            </p>
+
+<div class="text-center p-2">
+                        <button class="btn btn-light" type="submit" value="LOGIN"> Log in</button>
+</div>
+            </form>
         </div>
+        <div class="row justify-content-center text-white p-2">
+
+                <p class="text-justify">Pas de compte ? Vous pouvez vous enregistrer en remplissant un simple <a
+                        class="register-link" href="{% url 'rental:registration' %}?next={{ next }}">formulaire!</a>
+                </p>
+        </div>
+
     </div>
 {% endblock %}

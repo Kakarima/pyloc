@@ -1,16 +1,19 @@
 {% extends 'rental/base.html' %}
+
+{% load crispy_forms_tags %}
+
 {% block title %}Mon compte rental{% endblock %}
 
 {% block content %}
-    <div class="registration">
+    <div class="container registration content">
         <form method="post">
             {% csrf_token %}
             <h1>Créer un compte rental</h1>
-            {{ user_form.as_p }}
-            {{ customer_form.as_p }}
-            <p><input type="submit" value="CREER MON COMPTE"></p>
+            {{ user_form|crispy }}
+            {{ customer_form|crispy }}
+            <p><button class="btn btn-light" type="submit" value="CREER MON COMPTE">CREER MON COMPTE</button></p>
             <p>Vous avez déjà un compte ?
-                <a href="{% url 'rental:login' %}?next={{ next }}"> Identifiez-vous !</a>
+                <a class="register-link" href="{% url 'rental:login' %}?next={{ next }}"> Identifiez-vous !</a>
             </p>
         </form>
     </div>
