@@ -202,9 +202,9 @@ footer a:hover{
 
 }
 
-@media (min-width:600px) {
+@media (min-width:1400px) {
     #content-service{
-        height: 65vh;
+        height: 70vh;
     }
 }
 
