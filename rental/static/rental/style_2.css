@@ -293,3 +293,16 @@ footer a:hover{
 .border-golden{
    border-color: goldenrod;
 }
+
+/*------------Partenaires-------------*/
+
+.partenaires{
+
+    overflow-y:scroll;
+    height: 60vh;
+    width: 100%;
+
+
+
+
+}
