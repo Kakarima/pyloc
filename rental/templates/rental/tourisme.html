@@ -8,7 +8,9 @@
 
 {% block content %}
 
-<div class="categories content ">
+<div class="container-fluid categories content">
+<div class="row"> <h1 class="text-center text-golden text-uppercase">Véhicules Toursime</h1></div>
+<div class="row justify-content-center">
     {% for category in category_list %}
     <div class="list-item">
         <div class="img-container">
@@ -22,6 +24,7 @@
         </div>
     </div>
     {% endfor %}
+</div>
 </div>
 
 

@@ -247,6 +247,7 @@ footer a {
     background-color: black;
     opacity: 0.8;
     max-height: 540px;
+    border-radius: 10px;
 }
 
 .list-item {
