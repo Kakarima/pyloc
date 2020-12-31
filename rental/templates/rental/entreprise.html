@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{% static 'rental/style.css' %}"/>
 
 {% block content %}
-    <div class="container conseils content-dark-font">
+    <div class="container conseils content content-dark-font text-center">
         <div class="text-center text-uppercase">
             <h1>Rendre la mobilité accessible, plus facile et plus responsable grâce au partage !</h1>
         </div>
@@ -19,36 +19,41 @@
                 la
                 remise des clés.</p>
         </div>
-        <div class="d-flex flex-column flex-md-row ">
-            <div class="p-2">
+        <div class="d-flex flex-column flex-md-row justify-content-between">
+            <div class="col-md-3 p-2">
                 <div class="d-flex flex-column text-white list-entreprise">
-                    <div class="p-2"><img class="img-fluid rounded-circle "
-                                          src="{% static 'rental/icones/images.png' %}" alt="icone-agence"/></div>
+                    <div class="p-2"><img class="img-thumbnail rounded-circle"
+                                          src="{% static 'rental/icones/Images-redimensionnés/placeholder (1).png' %}"
+                                          alt="icone-agence"/></div>
                     <div class="p-2 text-left"><h2>Louez votre voiture partout</h2></div>
                     <div class="p-2 text-justify">Réservez votre voiture avec l'agence de location qui vous
                         correspond.
                     </div>
                 </div>
             </div>
-            <div class="p-2">
+            <div class="col-md-3 p-2">
                 <div class="d-flex flex-column text-white list-entreprise">
-                    <div class="p-2"><img class="img-thumbnail rounded-circle width: 20px"
-                                          src="{% static 'rental/icones/car-rent.png' %}" alt="icone-voiture"/></div>
+                    <div class="p-2"><img class="img-thumbnail rounded-circle "
+                                          src="{% static 'rental/icones/Images-redimensionnés/rent-a-car-sign.png' %}"
+                                          alt="icone-voiture"/></div>
                     <div class="p-2 text-left"><h2>Pour toutes les occasions</h2></div>
                     <div class="p-2 text-justify">Mariage, déménagement, vacances...Quels que soient vos besoins, louez
-                        un véhicule sur-mesure
+                        un véhicule sur-mesure.
                     </div>
                 </div>
             </div>
-                <div class="p-2">
-                    <div class="d-flex flex-column text-white list-entreprise">
-                        <div class="p-2"><img src="{% static 'rental/icones/prix.png' %}" alt="icone-prix"/></div>
-                        <div class="p-2 text-left"><h2>A des prix imbattables</h2></div>
-                        <div class="p-2 text-justify">Avec notre garantie meilleur prix, nous nous engageons à descendre
-                            notre tarif au niveau de la concurrence si vous trouvez moins cher ailleurs, n'est pas
-                            génial?
-                        </div>
+            <div class="col-md-3 p-2">
+                <div class="d-flex flex-column text-white list-entreprise">
+                    <div class="p-2"><img class="img-thumbnail rounded-circle "
+                                          src="{% static 'rental/icones/Images-redimensionnés/prix.png' %}"
+                                          alt="icone-prix"/></div>
+                    <div class="p-2 text-left"><h2>A des prix imbattables</h2></div>
+                    <div class="p-2 text-justify">Avec notre garantie meilleur prix, nous nous engageons à descendre
+                        notre tarif au niveau de la concurrence si vous trouvez moins cher ailleurs, n'est pas
+                        génial?
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 {% endblock %}

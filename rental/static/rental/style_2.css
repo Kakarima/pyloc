@@ -202,9 +202,9 @@ footer a:hover{
 
 }
 
-@media (min-width:600px) {
+@media (min-width:1400px) {
     #content-service{
-        height: 65vh;
+        height: 70vh;
     }
 }
 
@@ -278,4 +278,17 @@ footer a:hover{
 
 .list-entreprise h2{
     color: goldenrod;
+}
+
+/*--------------Contact-------------*/
+.font-golden{
+    background-color: goldenrod!important;
+}
+
+.text-golden{
+    color:goldenrod;
+}
+
+.border-golden{
+   border-color: goldenrod;
 }
