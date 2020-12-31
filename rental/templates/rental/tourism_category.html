@@ -22,7 +22,7 @@
                 <div class="d-flex flex-column flex-md-row p-2">
                     <div class="d-flex flex-row">
                         <div class="align-self-center p-2 ">
-                            <img class="img-fluid rounded icon-detail" src="{% static 'rental/icones/car_details_doors.png' %}"
+                            <img class="img-fluid rounded icon-detail" src="{% static 'rental/icones/Images-redimensionnés/Porte.png' %}"
                                  alt="icone-portes"/>
                         </div>
                         <div class="align-self-center p-2 ">{{ category.nb_doors }}
@@ -31,13 +31,13 @@
                     <div class="d-flex flex-row">
                         <div class="align-self-center p-2 ">
                             <img class="img-fluid rounded icon-detail"
-                                 src="{% static 'rental/icones/car_details_passengers.png' %}" alt="icone-utilisateur"/></div>
+                                 src="{% static 'rental/icones/Images-redimensionnés/user(1).png' %}" alt="icone-utilisateur"/></div>
                         <div class="align-self-center p-2 ">{{ category.nb_seats }}
                             place{{ category.nb_seats|pluralize }}</div>
                     </div>
                     <div class="d-flex flex-row">
                         <div class="align-self-center p-2 ">
-                            <img class="img-fluid rounded icon-detail" src="{% static 'rental/icones/car_details_luggage.png' %}"
+                            <img class="img-fluid rounded icon-detail" src="{% static 'rental/icones/Images-redimensionnés/Bagage.png' %}"
                                  alt="icone-bagages"></div>
                         <div class="align-self-center p-2 ">{{ category.nb_luggage }}
                             bagage{{ category.nb_luggage|pluralize }}</div>
@@ -46,20 +46,20 @@
                 <div class="d-flex flex-column flex-md-row p-2">
                     <div class="d-flex flex-row">
                         <div class="align-self-center p-2 ">
-                            <img class="img-fluid rounded icon-detail" src="{% static 'rental/icones/car_details_transmission.png' %}"
+                            <img class="img-fluid rounded icon-detail" src="{% static 'rental/icones/Images-redimensionnés/Vitesse.png' %}"
                                  alt="icone-boite-vitesse"></div>
                         <div class="align-self-center p-2 ">{{ category.get_gear_display }}</div>
                     </div>
                     <div class="d-flex flex-row">
                         <div class="align-self-center p-2 ">
-                            <img class="img-fluid rounded icon-detail" src="{% static 'rental/icones/car_details_energy.png' %}"
+                            <img class="img-fluid rounded icon-detail" src="{% static 'rental/icones/Images-redimensionnés/Essence.png' %}"
                                  alt="type-essence"></div>
                         <div class="align-self-center p-2 ">{{ category.get_energy_display }}</div>
                     </div>
                     <div class="d-flex flex-row">
                         <div class="align-self-center p-2 ">
                             <img class="img-fluid rounded icon-detail"
-                                 src="{% static 'rental/icones/car_details_AC.png' %}"
+                                 src="{% static 'rental/icones/Images-redimensionnés/Climatisation.png' %}"
                                  alt="climatisation"></div>
                         <div class="align-self-center p-2 ">{% if category.climate_control %}
                             Climatisation {% else %} -sans clim-{% endif %}</div>

@@ -247,6 +247,7 @@ footer a {
     background-color: black;
     opacity: 0.8;
     max-height: 540px;
+    border-radius: 10px;
 }
 
 .list-item {
@@ -590,23 +591,15 @@ footer a {
 /* FOOTER - CONDITIONS GENERALES */
 
 .conditions-generales {
-    background-color: black;
-    opacity: 0.8;
+
+
     color: white;
-    padding-top: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 50px;
-    text-align: justify;
+
+
     overflow-y: scroll;
     height: 540px;
 }
 
-.conditions-generales h1 {
-    text-transform: uppercase;
-    color: goldenrod;
-    font-size: 30px;
-}
 
 .conditions-generales p {
     font-size: 15px;

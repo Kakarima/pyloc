@@ -269,6 +269,7 @@ footer a:hover{
 
 .content-dark-font{
     background: rgba(0,0,0,0.8);
+    border-radius: 10px;
 }
 
 #vehicle-count li{
@@ -291,4 +292,19 @@ footer a:hover{
 
 .border-golden{
    border-color: goldenrod;
+}
+
+/*------------Partenaires-------------*/
+
+.partenaires{
+
+    overflow-y:scroll;
+    height: 60vh;
+    width: 100%;
+
+}
+
+/*------------LOGO-------------*/
+.logo{
+    font-size: 50px;
 }

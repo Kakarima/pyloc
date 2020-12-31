@@ -1,8 +1,8 @@
 {% extends "rental/base.html" %}
 {% block title %}Modifier votre compte{% endblock %}
 {% block content %}
-
-    <h1>Modifier votre compte</h1>
+<div class="container content content-dark-font">
+    <h1 class="text-golden">Modifier votre compte</h1>
     <form method="post" enctype="multipart/form-data">
         {{ user_form.as_p }}
         {{ customer_form.as_p }}
@@ -10,4 +10,5 @@
         <input type="hidden" name="next" value="{{ next }}"/>
         <p><input type="submit" value="Save changes"></p>
     </form>
+</div>
 {% endblock %}
