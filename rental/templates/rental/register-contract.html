@@ -48,7 +48,7 @@
                 </li>
                 <li class="list-group-item">Veuillez modifier les champs pour effectuer une réservation.</li>
                 <li class="list-group-item"><a class=" register-link font-weight-normal"
-                                               href="{% url 'rental:home' %}">Retour page d'accueil</a></li>
+                                               href="{% url 'rental:home' %}?next={{ next }}">Retour page d'accueil</a></li>
             </ul>
         </div>
     {% endif %}
