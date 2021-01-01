@@ -24,6 +24,11 @@ class UserRegistrationForm(forms.ModelForm):  # We create the User registration 
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
+        labels = {
+            "first_name": "Prénom",
+            "last_name": "Nom",
+            "email": "E-mail"
+        }
         fields = ('first_name', 'last_name', 'email')
 
 
@@ -33,6 +38,16 @@ class CustomerEditForm(forms.ModelForm):
     class Meta:
         model = Customer
         fields = ('licence_scan', 'licence_number', 'address', 'postal_code', 'city', 'phone', 'age', 'user')
+        labels = {
+            "licence_scan": "Scan Permis de Conduire",
+            "licence_number": "Numéro de Permis",
+            "address": "Adresse",
+            "postal_code": "Code Postal",
+            "city": "Ville",
+            "phone": "Téléphone",
+            "age": "Âge",
+            "user": "Utilisateur"
+        }
 
 
 def get_VehiclesCategories():  # we retrieve the couple id and sample from the table category and we display it
@@ -47,6 +62,9 @@ class SearchVehicleAgencyForm(ModelForm):
     class Meta:
         model = Agency
         fields = ['name']
+        labels = {
+            "name": "Agence"
+        }
         widgets = {'name': forms.Select(choices=get_agencies())}  # we display the combo box of agencies
 
 
@@ -54,6 +72,9 @@ class SearchVehicleCategoriesForm(ModelForm):
     class Meta:
         model = Category
         fields = ['label']
+        labels = {
+            "label": "Catégorie"
+        }
         widgets = {'label': forms.Select(choices=get_VehiclesCategories())}
 
 
@@ -72,15 +93,17 @@ class SearchVehicleDatesForm(forms.Form):
                                      required=True
                                      )
 
-    date_end = forms.DateTimeField(widget=DateTimeLocalInput(),
+    date_end = forms.DateTimeField(label='Date de fin',
+                                   widget=DateTimeLocalInput(),
                                    required=True,
                                    input_formats=date_input_formats)
 
 
-class SearchVehicleCustomerForm(forms.Form):  # we show the form of customer when we do the search
-    name = forms.CharField(required=True, max_length=100)
-    phone = forms.CharField(required=True, max_length=255)
-    email = forms.EmailField(required=True, max_length=255)
+class SearchVehicleCustomerForm(forms.Form):# we show the form of customer when we do the search
+    name = forms.CharField(label='Nom', required=True, max_length=100)
+    phone = forms.CharField(label='Téléphone', required=True, max_length=255)
+    email = forms.EmailField(label="E-Mail", required=True, max_length=255)
+
 
 
 class RentVehicleAgencyDatesForm(forms.Form):  # we show the form of the rentvehicle when we do the rent
