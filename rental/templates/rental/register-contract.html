@@ -4,54 +4,33 @@
 
 {% block content %}
     <div class="container content">
-
-
-        {% if ctr_error == '' %}
-            <div class="card p-3" id="order-recap">
-                <h5 class="title text-center" id="main-title-2">Récapitulatif de la réservation </h5>
-                <h6 class="text-justify">Votre réservation a bien été enregistré. Veuillez trouver les détails de votre
-                    réservation</h6>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <div class="recap"> Contrat de location n° :</div>
-                        <div>{{ contract.id }}</div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="recap">Date départ :</div>
-                        <div>{{ booking_date_start }}</div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="recap">Date de fin :</div>
-                        <div>{{ booking_date_end }}</div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="recap"> Catégorie de véhicule choisie :</div>
-                        <div>{{ vehicle.category.sample }}</div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="recap">Agence :</div>
-                        <div>{{ agency.name }}</div>
-                    </li>
-                </ul>
-            </div>
-            </div>
-
-        {% endif %}
-
-
-
-    {% if ctr_error != '' %}
-        <div class="card text-white">
+        <div class="card p-3" id="order-recap">
+            <h5 class="title text-center" id="main-title-2">Récapitulatif de la réservation </h5>
+            <h6 class="text-justify">Votre réservation a bien été enregistré. Veuillez trouver les détails de votre
+                réservation</h6>
             <ul class="list-group">
-                <li class="list-group-item">Un contrat existe déjà, donc vous ne pouvez pas réserver à cette
-                    date.
+                <li class="list-group-item">
+                    <div class="recap"> Contrat de location n° :</div>
+                    <div>{{ contract.id }}</div>
                 </li>
-                <li class="list-group-item">Veuillez modifier les champs pour effectuer une réservation.</li>
-                <li class="list-group-item"><a class=" register-link font-weight-normal"
-                                               href="{% url 'rental:home' %}?next={{ next }}">Retour page d'accueil</a></li>
+                <li class="list-group-item">
+                    <div class="recap">Date départ :</div>
+                    <div>{{ booking_date_start }}</div>
+                </li>
+                <li class="list-group-item">
+                    <div class="recap">Date de fin :</div>
+                    <div>{{ booking_date_end }}</div>
+                </li>
+                <li class="list-group-item">
+                    <div class="recap"> Catégorie de véhicule choisie :</div>
+                    <div>{{ vehicle.category.sample }}</div>
+                </li>
+                <li class="list-group-item">
+                    <div class="recap">Agence :</div>
+                    <div>{{ agency.name }}</div>
+                </li>
             </ul>
         </div>
-    {% endif %}
     </div>
 
 

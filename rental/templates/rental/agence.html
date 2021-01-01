@@ -1,25 +1,25 @@
-{% extends "./base.html" %}
+{% extends "rental/base.html" %}
 {% load static %}
 
 {% block content %}
 
 <div class="container content content-dark-font conseils" >
-            <div class="row justify-content-center py-3 " id="services-section">
-                <div class="text-center" id="title-details"> Agence {{ agency.name }}</div>
-            </div>
-            <div class="d-flex flex-column flex-md-row justify-content-center p-2">
-                <div class="p-2 col-md-3 align-self-center text-white text-left">
-                    <h2><em>Adresse :</em></h2> <br/>
-                    {{ agency.address }}<br/>
-                    <strong>Code postal :</strong> {{ agency.postal_code }}<br/>
-                    <strong>Ville :</strong> {{ agency.city }}<br/>
-                </div>
-                <div class="embed-responsive embed-responsive-1by1  py-2 col-md-6">
-                    <iframe class="embed-responsive-item align-self-center m-2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.9613919214016!2d2.307297360022083!3d48.869550718848075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc501cbb18d%3A0x111fac1ea9f06569!2s20%20Av.%20des%20Champs-%C3%89lys%C3%A9es%2C%2075008%20Paris!5e0!3m2!1sfr!2sfr!4v1609026462857!5m2!1sfr!2sfr"
-                            width="400" height="275" frameborder="0" style="border:0;" allowfullscreen=""
-                            aria-hidden="false" tabindex="0"></iframe>
-                    </iframe>
-                </div>
-              </div>
+    <div class="row justify-content-center py-3 " id="services-section">
+        <div class="text-center" id="title-details"> Agence {{ agency.name }}</div>
+    </div>
+    <div class="d-flex flex-column flex-md-row justify-content-center p-2">
+        <div class="p-2 col-md-3 align-self-center text-white text-left">
+            <h2><em>Adresse :</em></h2> <br/>
+            {{ agency.address }}<br/>
+            <strong>Code postal :</strong> {{ agency.postal_code }}<br/>
+            <strong>Ville :</strong> {{ agency.city }}<br/>
+        </div>
+        <div class="embed-responsive embed-responsive-1by1  py-2 col-md-6">
+            <iframe class="embed-responsive-item align-self-center m-2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.9613919214016!2d2.307297360022083!3d48.869550718848075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc501cbb18d%3A0x111fac1ea9f06569!2s20%20Av.%20des%20Champs-%C3%89lys%C3%A9es%2C%2075008%20Paris!5e0!3m2!1sfr!2sfr!4v1609026462857!5m2!1sfr!2sfr"
+                    width="400" height="275" frameborder="0" style="border:0;" allowfullscreen=""
+                    aria-hidden="false" tabindex="0"></iframe>
+            </iframe>
+        </div>
+      </div>
 </div>
 {% endblock %}

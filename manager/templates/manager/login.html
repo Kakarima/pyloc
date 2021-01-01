@@ -4,7 +4,7 @@
     <div id="home-main-content">
         <h1>Connexion gestionnaire</h1>
         <div>
-            <div class="login-form">
+            <div class="login-form"> {# It shows a problem when the username and password don't match. The form.errors comes directly from Django #}
                 {% if form.errors %}
                     <p>
                         Le nom d'utilisateur et le mot de passe ne correspondent pas.
@@ -12,7 +12,7 @@
                     </p>
                 {% endif %}
                 <form action="{% url 'manager:login' %}" method="post">
-                    {{ form.as_p }}
+                    {{ form.as_p }} {# It shows the login form and it comes directly from django  #}
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ next }}"/>
                     <p><input type="submit" value="LOGIN"></p>
