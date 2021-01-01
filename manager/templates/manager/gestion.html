@@ -1,8 +1,9 @@
-{% extends "./base.html" %}
+{% extends "manager/base.html" %}
 {% load static %}
 
 {% block content %}
 
+    {# Welcome message for the manager and we show his name #}
 <div id="home-main-content">
     <h1>Bienvenue sur votre espace personnel !</h1><br/>
     <h2>Hello {{ user.first_name }} {{ user.last_name }}</h2>

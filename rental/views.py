@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import Http404
 from .forms import SearchVehicleDatesForm, SearchVehicleCategoriesForm, \
     SearchVehicleCustomerForm, SearchVehicleAgencyForm
 from .models import Category, Agency, Customer, Contract, Vehicle, User
 from .forms import UserRegistrationForm, UserEditForm, CustomerEditForm
 from django.db.models import Subquery
+from django.contrib.auth.models import Group
+
+def customer_only_check(user):
+    return user.groups.filter(name='customers').exists()
 
 
 def tourism_categories(request):
@@ -73,6 +77,8 @@ def register(request):
             user = user_form.save(commit=False)
             user.set_password(user_form.cleaned_data['password'])
             user.save()
+            customer_group = Group.objects.get(name='customers')
+            customer_group.user_set.add(user)
             customer = customer_form.save(commit=False)
             customer.user = user
             customer.save()
@@ -91,7 +97,8 @@ def register(request):
                       {'user_form': user_form, 'customer_form': customer_form, 'next': next_page})
 
 
-@login_required
+@login_required(login_url='rental:login')
+@user_passes_test(customer_only_check, login_url='rental:forbidden')
 def edit_customer(request):
     if request.method == 'POST':
         user_form = UserEditForm(request.POST, instance=request.user)
@@ -127,8 +134,6 @@ def home(request):
                 'contract': contract}
             return render(request, 'rental/register-contract.html', context)
 
-
-
     post = request.POST or None
     searchvehicledatesform = SearchVehicleDatesForm(post, prefix='search_dates')
     searchvehiclecategoriesform = SearchVehicleCategoriesForm(post, prefix='search_vehicle_category')
@@ -142,7 +147,6 @@ def home(request):
         searchvehiclecustomerform = SearchVehicleCustomerForm(post, prefix='search_customer')
 
     display_form = True
-    display_results = False
     display_booking_date_start = display_booking_date_end = \
         booking_date_start = booking_date_end = vehicles = agency = category = customer = already_contracted = None
 
@@ -200,14 +204,13 @@ def home(request):
             print('vehicle = ' + str(vehicle))
 
         display_form = False
-        display_results = True
 
     return render(request, 'rental/pyloc.html', {'searchvehicledatesform': searchvehicledatesform,
                                                  'searchvehiclecategoriesform': searchvehiclecategoriesform,
                                                  'searchvehicleagencyform': searchvehicleagencyform,
                                                  'searchvehiclecustomerform': searchvehiclecustomerform,
                                                  'display_form': display_form,
-                                                 'display_results':  display_results,
+                                                 'display_results': not display_form,
                                                  'vehicles': vehicles,
                                                  'already_contracted': already_contracted,
                                                  'booking_date_start': booking_date_start,
@@ -219,6 +222,8 @@ def home(request):
                                                  'customer': customer})
 
 
+@login_required(login_url='rental:login')
+@user_passes_test(customer_only_check, login_url='rental:forbidden')
 def register_contract(request):
 
     from .forms import RentVehicleAgencyDatesForm
@@ -228,35 +233,31 @@ def register_contract(request):
 
     rentvehicleagencydatesform = RentVehicleAgencyDatesForm(post)
 
-    print('rentvehicleagencydatesform')
-    print(rentvehicleagencydatesform.is_valid())
-    print(rentvehicleagencydatesform.errors)
-
     contract = agency = vehicle = None
     customer = None
     user_exist = False
     if request.user is None or not request.user.is_authenticated:
         if post is not None:
+            if rentvehicleagencydatesform.is_valid():
+                auth_user = User.objects.all() \
+                    .filter(username=rentvehicleagencydatesform.cleaned_data.get('customer_name')) \
+                    .filter(email=rentvehicleagencydatesform.cleaned_data.get('customer_email'))
 
-            auth_user = User.objects.all() \
-                .filter(username=rentvehicleagencydatesform.cleaned_data.get('customer_name')) \
-                .filter(email=rentvehicleagencydatesform.cleaned_data.get('customer_email'))
+                customers = Customer.objects.all() \
+                    .filter(phone=rentvehicleagencydatesform.cleaned_data.get('customer_phone')) \
+                    .filter(user_id__in=Subquery(auth_user.values('id')))
 
-            customers = Customer.objects.all() \
-                .filter(phone=rentvehicleagencydatesform.cleaned_data.get('customer_phone')) \
-                .filter(user_id__in=Subquery(auth_user.values('id')))
-
-            if customers.count() > 0:
-                customer = customers.first()
-                user_exist = True
-            else:
-                return redirect('/rental/registration?username=' +
-                                str(rentvehicleagencydatesform.cleaned_data.get('customer_name')) +
-                                '&email=' +
-                                str(rentvehicleagencydatesform.cleaned_data.get('customer_email')) +
-                                '&phone=' +
-                                str(rentvehicleagencydatesform.cleaned_data.get('customer_phone')) +
-                                '&next=/rental')
+                if customers.count() > 0:
+                    customer = customers.first()
+                    user_exist = True
+                else:
+                    return redirect('/rental/registration?username=' +
+                                    str(rentvehicleagencydatesform.cleaned_data.get('customer_name')) +
+                                    '&email=' +
+                                    str(rentvehicleagencydatesform.cleaned_data.get('customer_email')) +
+                                    '&phone=' +
+                                    str(rentvehicleagencydatesform.cleaned_data.get('customer_phone')) +
+                                    '&next=/rental')
 
     if rentvehicleagencydatesform.is_valid():
 
@@ -273,7 +274,6 @@ def register_contract(request):
         # récupération du véhicule
         vehicle_id = rentvehicleagencydatesform.cleaned_data.get('vehicle_id')
         vehicle = Vehicle.objects.all().get(id=vehicle_id, active=True)
-        print('vehicle = ' + str(vehicle))
 
         booking_date_start = rentvehicleagencydatesform.cleaned_data.get('booking_date_start')
         # on récupère la date de début souhaitée pour la location
@@ -289,7 +289,6 @@ def register_contract(request):
             customer_phone = rentvehicleagencydatesform.cleaned_data.get('customer_phone')
             customer = Customer(name=customer_name, email=customer_email, phone=customer_phone)
             customer.save()
-
 
         contract = Contract(vehicle=vehicle, customer=customer, agence=agency, date_start=booking_date_start,
                             date_end=booking_date_end, scheduled_date_end=booking_date_end)

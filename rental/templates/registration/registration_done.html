@@ -2,7 +2,7 @@
 {% block title %}Bienvenue dans rental{% endblock %}
 
 {% block content %}
-    <div class="registration-done"
+    <div class="registration-done">
         <h1>Bienvenue {{ new_user.first_name }} !</h1>
         <p>Votre compte a été créé. Vous pouvez maintenant vous
             <a href="{% url "rental:login" %}?next={{ next }}">connecter</a>.</p>

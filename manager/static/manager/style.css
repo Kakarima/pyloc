@@ -6,6 +6,7 @@
 
 a:hover {
     color: goldenrod;
+    text-decoration: none;
 }
 
 p {
@@ -116,7 +117,6 @@ header a
 
 #color
 {
-    background-color: black;
     padding-bottom: 15px;
     background: linear-gradient(black, gray);
 }
@@ -133,7 +133,6 @@ section {
 /* VEHICULES */
 
 #vehicule_presentation {
-    display: flex;
     justify-content: space-evenly;
     background-color: black;
     opacity: 0.8;
@@ -148,36 +147,37 @@ section {
     justify-content: flex-end;
 }
 
-#vehicule_actions a {
-    color: black;
-    text-transform: uppercase;
-    text-decoration: none;
+.add-btn-container {
     display: flex;
-    background-color: goldenrod;
-    border-radius: 5px;
-    text-align: center;
+    justify-content: flex-end;
+    margin-right: 15%;
+    padding-bottom: 20px;
 }
 
+.add-btn-container a {
+    color: black;
+}
 
 #vehicules_list {
-    display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     color: white;
 }
-#vehicules_list h3 {
+#vehicule_actions h3 {
     text-transform: uppercase;
     color: goldenrod;
     font-size: 30px;
     text-align: center;
+    padding-top: 50px;
 }
 
 #vehicules_list table {
-    width: 65%;
+    width: 80%;
+    margin-left: 10%;
     table-layout: fixed;
     border-collapse: collapse;
     font-size: 20px;
+    color: white;
 }
-
 
 /* AJOUTER VEHICULE */
 
