@@ -9,8 +9,10 @@
         <form method="post">
             {% csrf_token %}
             <h1>Créer un compte rental</h1>
-            {{ user_form|crispy }}  # we retrieve the user form
-            {{ customer_form|crispy }}  # we retrieve the customer form and we display the two forms
+{#          we retrieve the user form        #}
+            {{ user_form|crispy }}
+{#          we retrieve the customer form and we display the two forms#}
+            {{ customer_form|crispy }}
             <p><button class="btn btn-light" type="submit" value="CREER MON COMPTE">CREER MON COMPTE</button></p>
             <p>Vous avez déjà un compte ?
                 <a class="register-link" href="{% url 'rental:login' %}?next={{ next }}"> Identifiez-vous !</a>
