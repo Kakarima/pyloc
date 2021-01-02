@@ -20,6 +20,7 @@ class Agency(models.Model):
     address = models.CharField(max_length=255, null=False)
     postal_code = models.CharField(max_length=10, null=False)
     city = models.CharField(max_length=255, null=False)
+    location = models.CharField(max_length=1000, null=False)
 
     class Meta:
         verbose_name = 'Agence de location'
