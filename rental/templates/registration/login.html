@@ -25,21 +25,21 @@
             <form class="text-white p-2" action="{% url 'rental:login' %}" method="post">
 
 
-                        {{ form|crispy }}
+                {{ form|crispy }}
 
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{{ next }}"/>
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}"/>
 
-<div class="text-center p-2">
-                        <button class="btn btn-light" type="submit" value="LOGIN"> Log in</button>
-</div>
+                <div class="text-center p-2">
+                    <button class="btn btn-light" type="submit" value="LOGIN"> Connexion</button>
+                </div>
             </form>
         </div>
         <div class="row justify-content-center text-white p-2">
 
-                <p class="text-justify">Pas de compte ? Vous pouvez vous enregistrer en remplissant un simple <a
-                        class="register-link" href="{% url 'rental:registration' %}?next={{ next }}">formulaire!</a>
-                </p>
+            <p class="text-justify">Pas de compte ? Vous pouvez vous enregistrer en remplissant un simple
+                <a class="register-link" href="{% url 'rental:registration' %}?next={{ next }}">formulaire!</a>
+            </p>
         </div>
 
     </div>
