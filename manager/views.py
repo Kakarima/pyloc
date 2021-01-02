@@ -10,11 +10,9 @@ from django.contrib.auth.decorators import permission_required
 
 # Gestion des véhicules #
 
-# We retrieve all the vehicles from the table vehicle
-# then we pass the list to the page vehicles.html
 
-
-def vehicules(request):
+def vehicules(request):  # We retrieve all the vehicles from the table vehicle
+    # then we pass the list to the page vehicles.html
     vehicules = Vehicle.objects.all()
     return render(request, 'manager/vehicules.html', {'vehicules': vehicules})
 
