@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends 'rental/base.html' %}
 
 {% load crispy_forms_tags %}
 
@@ -14,7 +14,7 @@
             <h1 class="text-golden">Louez en toute sérénité</h1>
         </div>
         <div class="d-flex flex-column flex-md-row ">
-            {% if display_results and already_contracted.count > 0 and vehicles.count == 0 %}
+            {% if display_results and already_contracted.count > 0 and vehicles.count == 0 %}  {# we check if the user has a contract and that there is no vehicle available #}
                 <div class="card align-self-center results p-2 m-2">
                     <div class="card-body">
                         <h5 class=" text-center ">Résultat de la recherche</h5>
@@ -25,7 +25,7 @@
                     </div>
                 </div>
 
-            {% elif display_results %}
+            {% elif display_results %}  {# there is no contract on this vehicle and there still are some vehicles available so we show the number of vehicles available #}
                 <div class="card align-self-center results p-2 m-2">
                     <div class="card-body">
                         <h5 class=" text-center ">Résultat de la recherche</h5>
@@ -81,6 +81,8 @@
                     </div>
                 </div>
             {% endif %}
+
+        {# there is no vehicle available and no contract of reservation #}
         {% if not display_results or vehicles.count == 0 %}
             <div class="col-lg-3 col-sm-6 ml-auto p-2 align-self-center" id="form_resa">
                 <form id="form_resa" name="search" method="post" action=" ">

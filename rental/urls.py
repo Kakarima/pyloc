@@ -1,8 +1,12 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+from django.core.exceptions import PermissionDenied
 
 app_name = 'rental'
+
+def permission_denied_view(request):
+    raise PermissionDenied
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -22,4 +26,5 @@ urlpatterns = [
     path('agences/agence/<int:id_agency>', views.agence, name='agence'),
     path('confidentialite/', views.confidentialite, name='confidentialite'),
     path('register/contract', views.register_contract, name='register_contract'),
+    path('403/', permission_denied_view, name='forbidden'),
 ]

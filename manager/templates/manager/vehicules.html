@@ -5,19 +5,15 @@
 {% block content %}
     <div id="vehicule_presentation">
         <div id="vehicule_actions">
-            <ul>
-                <li><a href="{%url 'manager:ajout_vehicule'%}">Ajouter un véhicule</a></li>
-            </ul>
+            <h3>Liste des véhicules</h3>
         </div>
 
         <div id="vehicules_list">
-            <table id="Liste_des_véhicules" aria-label="Liste des véhicules">
+            <div class="add-btn-container">
+                <button type="button" class="btn btn-warning"><a href="{%url 'manager:ajout_vehicule'%}">Ajouter un véhicule</a></button>
+            </div>
+            <table class="table" id="Liste_des_véhicules" aria-label="Liste des véhicules">
                 <thead>
-                    <tr class="liste_vehicules">
-                        <td colspan="7">
-                            <h3>Liste des véhicules</h3>
-                        </td>
-                    </tr>
                     <tr>
                         <td><strong>Nom Agence</strong></td>
                         <td><strong>Code</strong></td>
@@ -25,7 +21,7 @@
                         <td><strong>Sample</strong></td>
                         <td><strong>Marque</strong></td>
                         <td><strong>Numéro d'enregistrement</strong></td>
-                        <td><strong>Modification?</strong></td>
+                        <td></td>
                     </tr>
                 </thead>
 
@@ -41,7 +37,7 @@
                         <td>
                             <form id="suppression" method="post" action={% url 'manager:suppression_vehicule' vehicle.id %}>
                                 {% csrf_token %}
-                                <button type="submit">Supprimer</button>
+                                <button type="submit" class="btn btn-warning">Supprimer</button>
                             </form>
                         </td>
                     </tr>

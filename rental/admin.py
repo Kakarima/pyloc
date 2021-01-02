@@ -1,9 +1,26 @@
 from django.contrib import admin
 from django.utils.text import Truncator
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import Category, Agency
+from .models import Category, Agency, User
 
 admin.site.register(Agency)
+
+
+# Define a new User admin
+class UserAdmin(BaseUserAdmin):
+    list_display = BaseUserAdmin.list_display + ('is_superuser', 'email')
+
+
+UserAdmin.add_fieldsets = (
+    (None, {
+        'classes': ('wide',),
+        'fields': ('email', 'username', 'password1', 'password2', 'first_name', 'last_name', 'is_staff', 'is_active',
+                   'is_superuser')
+    }),
+)
+admin.site.unregister(User)
+admin.site.register([User], UserAdmin)
 
 
 @admin.register(Category)
