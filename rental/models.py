@@ -122,7 +122,6 @@ class Customer(models.Model):
     creditCardNumber = models.CharField(max_length=16, null=True)
     creditCardValidity = models.CharField(max_length=4, null=True)
 
-
     def __str__(self):
         return f'Customer {self.user.username}'
 
