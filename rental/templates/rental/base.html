@@ -19,39 +19,39 @@
     <div class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 mb-1   ">
         <a class="my-0 mr-md-auto font-weight-normal d-inline-block" href="{% url 'rental:home' %}" id="main-title-2">
             <div class=" align-content-center">
-            <img
-                 src="{% static 'rental/icones/logo_p.png' %}" width="20%"
-                class=" align-top d-inline-block " alt="">
-            <div class="d-inline-block  logo">PyLOC</div>
+                <img
+                        src="{% static 'rental/icones/logo_p.png' %}" width="20%"
+                        class=" align-top d-inline-block " alt="">
+                <div class="d-inline-block  logo">PyLOC</div>
             </div>
         </a>
         <div class="d-inline-block text-right">
-        <div class="d-block p-2">
-            <div class=" my-2 my-md-0 mr-md-3 p-2" id="icons">
-                {% if not user.is_authenticated %}
-                    <a href="{% url 'rental:edit_customer' %}?next={{ request.path }}">
-                        {{ request.user.first_name }} {{ request.user.last_name }}
-                    </a>
-                    <a href="{% url 'rental:login' %}?next={{ request.path }}">
-                        <i class="fa fa-user" aria-hidden="true"></i>Se connecter
-                    </a>
-                {% else %}
-                    <a href="{% url 'rental:logout' %}?next={{ request.path }}">
-                        {{ request.user.first_name }} {{ request.user.last_name }} <i class="fa fa-user"
-                                                                                      aria-hidden="true"></i>Se
-                        déconnecter
-                    </a>
-                {% endif %}
+            <div class="d-block p-2">
+                <div class=" my-2 my-md-0 mr-md-3 p-2" id="icons">
+                    {% if not user.is_authenticated %}
+                        <a href="{% url 'rental:edit_customer' %}?next={{ request.path }}">
+                            {{ request.user.first_name }} {{ request.user.last_name }}
+                        </a>
+                        <a href="{% url 'rental:login' %}?next={{ request.path }}">
+                            <i class="fa fa-user" aria-hidden="true"></i>Se connecter
+                        </a>
+                    {% else %}
+                        <a href="{% url 'rental:logout' %}?next={{ request.path }}">
+                            {{ request.user.first_name }} {{ request.user.last_name }} <i class="fa fa-user"
+                                                                                          aria-hidden="true"></i>Se
+                            déconnecter
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="d-block p-2">
+                    <nav class="my-2 my-md-0 mr-md-3" id="menu">
+                        <a class="item-menu p-2 active" href="{% url 'rental:tourism_categories' %}">Tourisme</a>
+                        <a class="item-menu p-2 active" href="{% url 'rental:services_categories' %}">Services</a>
+                        <a class="item-menu p-2 active" href="{% url 'rental:agences' %}">Agences</a>
+                        <a class="item-menu p-2 active" href="{% url 'rental:entreprise_categories' %}">Entreprise</a>
+                    </nav>
+                </div>
             </div>
-        <div class="d-block p-2">
-            <nav class="my-2 my-md-0 mr-md-3" id="menu">
-                <a class="item-menu p-2 active" href="{% url 'rental:tourism_categories' %}">Tourisme</a>
-                <a class="item-menu p-2 active" href="{% url 'rental:services_categories' %}">Services</a>
-                <a class="item-menu p-2 active" href="{% url 'rental:agences' %}">Agences</a>
-                <a class="item-menu p-2 active" href="{% url 'rental:entreprise_categories' %}">Entreprise</a>
-            </nav>
-        </div>
-        </div>
             {#    <a class="btn btn-dark p-2" href="#">Se connecter</a>#}
         </div>
     </div>
@@ -65,36 +65,37 @@
 </main>
 
 
-<footer class="d-flex flex-column flex-md-row footer container-fluid border-top py-2">
-    <div class="col  ">
-        <img class="p-2 mb-2" src="{% static 'rental/icones/clicli.png' %}" alt="" width="auto" height="100">
-        <small class="p-2 d-block mb-3 text-white">&copy; Pyloc</small>
-    </div>
-    <div class="col  ">
-        <h5>A propos de votre réservation</h5>
-        <ul class="list-unstyled text-small">
-            <li><a href="{% url 'rental:conseils' %}">Conseils de voyage</a></li>
-            <li><a href="{% url 'rental:contact_categories' %}">Nous contacter</a></li>
+<footer class="d-flex flex-column flex-md-row footer container-fluid justify-content-between border-top py-2">
+    <div class="d-flex flex-column flex-md-row justify-content-center col-10">
+        <div class="col p-3 ">
+            <h5>A propos de votre réservation</h5>
+            <ul class="pl-3 list-unstyled text-small">
+                <li><a href="{% url 'rental:conseils' %}">Conseils de voyage</a></li>
+                <li><a href="{% url 'rental:contact_categories' %}">Nous contacter</a></li>
+            </ul>
+        </div>
+        <div class="col p-3  ">
+            <h5>A propos de PyLOC</h5>
+            <ul class="pl-3 list-unstyled text-small">
+                <li><a href="{% url 'rental:partenaires' %}">Nos partenaires</a></li>
+                <li><a href="{% url 'rental:entreprise_categories' %}">Notre entreprise</a></li>
 
-        </ul>
-    </div>
-    <div class="col  ">
-        <h5>A propos de PyLOC</h5>
-        <ul class="list-unstyled text-small">
-            <li><a href="{% url 'rental:partenaires' %}">Nos partenaires</a></li>
-            <li><a href="{% url 'rental:entreprise_categories' %}">Notre entreprise</a></li>
+            </ul>
+        </div>
+        <div class="col p-3">
+            <h5>Informations légales</h5>
+            <ul class="pl-3 list-unstyled text-small">
 
-        </ul>
+                <li><a href="{% url 'rental:confidentialite' %}">Politique de confidentialité</a></li>
+                <li><a href="{% url 'rental:conditions' %}">Conditions générales</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="col ">
-        <h5>Informations légales</h5>
-        <ul class="list-unstyled text-small">
-
-            <li><a href="{% url 'rental:confidentialite' %}">Politique de confidentialité</a></li>
-            <li><a href="{% url 'rental:conditions' %}">Conditions générales</a></li>
-        </ul>
-    </div>
-
+    <div class="col-6 col-md-2 mx-auto">
+        <div class="d-flex flex-column  align-items-start ml-auto">
+            <img class="p-2  mb-2" src="{% static 'rental/icones/clicli.png' %}" alt="" width="auto" height="100">
+            <small class="p-2  text-white">&copy; Pyloc</small>
+        </div>
     </div>
 
 </footer>

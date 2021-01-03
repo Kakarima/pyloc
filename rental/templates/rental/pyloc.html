@@ -10,9 +10,6 @@
          id="content-index"
             {% endif %}>
 
-        <div class="col-11 text-center font-italic" id="titre-main-content">
-            <h1 class="text-golden">Louez en toute sérénité</h1>
-        </div>
         <div class="d-flex flex-column flex-md-row justify-content-between">
             {% if display_results and already_contracted.count > 0 and vehicles.count == 0 %}  {# we check if the user has a contract and that there is no vehicle available #}
                 <div class="card align-self-center results p-2 m-2">
