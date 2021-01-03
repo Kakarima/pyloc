@@ -6,7 +6,7 @@ from django.core.exceptions import PermissionDenied
 app_name = 'rental'
 
 
-def permission_denied_view():
+def permission_denied_view(request):
     raise PermissionDenied
 
 
