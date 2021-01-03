@@ -10,10 +10,7 @@
          id="content-index"
             {% endif %}>
 
-        <div class="col-11 text-center font-italic" id="titre-main-content">
-            <h1 class="text-golden">Louez en toute sérénité</h1>
-        </div>
-        <div class="d-flex flex-column flex-md-row ">
+        <div class="d-flex flex-column flex-md-row justify-content-between">
             {% if display_results and already_contracted.count > 0 and vehicles.count == 0 %}  {# we check if the user has a contract and that there is no vehicle available #}
                 <div class="card align-self-center results p-2 m-2">
                     <div class="card-body">
@@ -84,7 +81,7 @@
 
         {# there is no vehicle available and no contract of reservation #}
         {% if not display_results or vehicles.count == 0 %}
-            <div class="col-lg-3 col-sm-6 ml-auto p-2 align-self-center" id="form_resa">
+            <div class="col-md-4 ml-auto p-2 align-self-center" id="form_resa">
                 <form id="form_resa" name="search" method="post" action=" ">
                     {% csrf_token %}
                     <h5 class="text-white text-center">Réserver d&egrave;s aujourd'hui</h5>
