@@ -4,51 +4,76 @@
 <head>
     {% load static %}
     <meta charset="utf-8"/>
-    <title>{% block title %}PyLOC Manager{% endblock%}</title>
+    <title>{% block title %}PyLOC Manager{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'rental/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'rental/style_2.css' %}"/>
     <link rel="stylesheet" href="{% static 'manager/style.css' %}"/>
     <script src="{% static 'manager/js/font_awesome.js' %}"></script>
 </head>
 
 <body>
-<header>
-    <div id="main-title"><a href="{%url 'manager:gestion' %}">PyLOC</a></div>
-    <div id="icons-menu">
-        <div id="icons">
-            {% if request.user.is_authenticated %}
-                <p>{{ request.user.first_name}} {{ request.user.last_name }}</p>
-                <a href="{% url 'manager:logged_out' %}?next={% url 'manager:logged_out' %}">
-                    <img id="logout" class="toolbar-icon"
-                         src="{% static 'manager/icones/logout.png' %}"
-                         alt="Logout"/>
-                </a>
-            {% else %}
-                <a href="{% url 'manager:login' %}?next={{ request.path }}">
-                    <img id="login" class="toolbar-icon"
-                         src="{% static 'manager/icones/login.png' %}"
-                         alt="Login"/>
-                </a>
-            {% endif %}
+<header class="container-fluid ">
+    <div class="container-fluid d-flex flex-column">
+        <div class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 mb-1">
+            <a class="my-0 mr-md-auto font-weight-normal d-inline-block" href="{% url 'manager:gestion' %}"
+               id="main-title-2">
+                <div class=" align-content-center">
+                    <img
+                            src="{% static 'manager/icones/logo_p.png' %}" width="20%"
+                            class=" align-top d-inline-block " alt="">
+                    <div class="d-inline-block  logo">PyLOC</div>
+                </div>
+            </a>
+            <div class=" my-2 my-md-0 mr-md-3 p-2" id="icons">
+                <div>
+                    {% if request.user.is_authenticated %}
+                        <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
+                        <a href="{% url 'manager:logged_out' %}?next={% url 'manager:logged_out' %}">
+                            <img id="logout" class="toolbar-icon"
+                                 src="{% static 'manager/icones/logout.png' %}"
+                                 alt="Logout"/>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'manager:login' %}?next={{ request.path }}">
+                            <img id="login" class="toolbar-icon"
+                                 src="{% static 'manager/icones/login.png' %}"
+                                 alt="Login"/>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="text-md-right py-2 content-golden">
+            <nav class="mt-2 my-md-0 mr-md-3" id="menu">
+                <a class="item-menu p-2 active" href="{% url 'manager:vehicules' %}">Gestion des véhicules</a>
+                <a class="item-menu p-2 active" href="{% url 'manager:vehicules' %}">Véhicules disponibles</a>
+            </nav>
+        </div>
+        <div class="container-fluid d-flex flex-column flex-md-row footer  justify-content-between border-top py-2">
+
         </div>
     </div>
 </header>
 
-<nav id="main-menu" aria-label="Menu Principal">
-    <ul>
-        <li><a href="{% url 'manager:vehicules' %}">Gestion des véhicules</a></li>
-    </ul>
-</nav>
 
-<nav id="color"></nav>
-
-<section>
-    <div>{% block content %}{% endblock %}</div>
-</section>
-
-
-<footer>
-    <div class="footer-bloc">
+<main role="main">
+    <div class="p-5">
+    <div class="container content">
+        {% block content %}{% endblock %}
     </div>
+    </div>
+</main>
+
+<footer class="container-fluid d-flex flex-column flex-md-row footer  justify-content-between border-top py-2">
+    <div class>
+          <div class="col-6 col-md-3 ">
+        <div class="d-flex flex-column  align-items-start ml-auto">
+            <img class="p-2  mb-2" src="{% static 'rental/icones/clicli.png' %}" alt="" width="auto" height="100">
+            <small class="p-2  text-white">&copy;Pyloc</small>
+        </div>
+    </div>
+    </div>
+
 </footer>
 </body>
 

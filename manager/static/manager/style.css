@@ -121,13 +121,22 @@ header a
     background: linear-gradient(black, gray);
 }
 
+.content-golden{
+background: linear-gradient(goldenrod, darkgoldenrod);
+}
 /* SECTION */
 
 section {
     flex-grow: 1;
-    background: url("images/10best-cars-group-cropped-1542126037.jpg") no-repeat center center;
-    background-size: cover;
+
     display: flex;
+}
+
+/* MAIN */
+main{
+    background-image: url("./images/10best-cars-group-cropped-1542126037.jpg") !important;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* VEHICULES */

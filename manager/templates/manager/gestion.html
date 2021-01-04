@@ -4,9 +4,9 @@
 {% block content %}
 
     {# Welcome message for the manager and we show his name #}
-<div id="home-main-content">
-    <h1>Bienvenue sur votre espace personnel !</h1><br/>
-    <h2>Hello {{ user.first_name }} {{ user.last_name }}</h2>
+<div class="card text-justify text-white p-2">
+    <h1 class="card-title">Bienvenue sur votre espace personnel !</h1>
+    <h2 class="card-subtitle">Hello {{ user.first_name }} {{ user.last_name }}</h2>
 </div>
 
 {% endblock %}
