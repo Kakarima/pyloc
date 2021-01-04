@@ -6,13 +6,19 @@
 { # form.as_p comes from django and helps us to display the vehicle form (which is specified in forms.py with the fields) # }
 
 {% block content %}
-    <div class="content-dark-font justify-content-center p-2">
-        <h1 class="text-golden text-center">Ajout d'un véhicule</h1>
-        <div class="text-white col-4">
-        <form name="add_vehicle" id="form_add_vehicle" method="POST">
+    <div class="content-dark-font  p-2">
+        <div class="row justify-content-center">
+        <h1 class="text-golden">Ajout d'un véhicule</h1>
+        </div>
+
+        <div class=" row justify-content-center  p-2">
+            <div class="">
+        <form class="text-white" name="add_vehicle"  method="POST">
             {% csrf_token %}
             {{ vehicle_form|crispy }}
             <button type="submit" class="btn btn-success" value="Valider">Valider</button>
         </form></div>
+        </div>
+
     </div>
 {% endblock %}
