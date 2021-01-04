@@ -1,23 +1,28 @@
 {% extends 'manager/base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}Login gestionnaire{% endblock %}
 {% block content %}
-    <div id="home-main-content">
-        <h1>Connexion gestionnaire</h1>
-        <div>
-            <div class="login-form"> {# It shows a problem when the username and password don't match. The form.errors comes directly from Django #}
-                {% if form.errors %}
-                    <p>
-                        Le nom d'utilisateur et le mot de passe ne correspondent pas.
-                        Merci d'essayer de nouveau.
-                    </p>
-                {% endif %}
-                <form action="{% url 'manager:login' %}" method="post">
-                    {{ form.as_p }} {# It shows the login form and it comes directly from django  #}
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{{ next }}"/>
-                    <p><input type="submit" value="LOGIN"></p>
-                </form>
-            </div>
+    <div class=" content-dark-font text-white justify-content-center p-2">
+    <div class="row justify-content-center" id="title">
+        <h1 class="p-2">Connexion gestionnaire</h1>
+    </div>
+    <div class="row justify-content-center">
+
+            {# It shows a problem when the username and password don't match. The form.errors comes directly from Django #}
+            {% if form.errors %}
+                <p class="text-justify text-danger">
+                    Le nom d'utilisateur et le mot de passe ne correspondent pas.
+                    Merci d'essayer de nouveau.
+                </p>
+            {% endif %}
+        <div class="col-4 ">
+            <form action="{% url 'manager:login' %}" method="post">
+                {{ form|crispy }} {# It shows the login form and it comes directly from django  #}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <button type="submit" value="LOGIN">Connexion</button>
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}
