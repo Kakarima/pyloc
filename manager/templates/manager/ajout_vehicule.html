@@ -1,17 +1,24 @@
 {% extends "manager/base.html" %}
-
+{% load crispy_forms_tags %}
 {% block title %}Gestion de la liste des véhicules : ajout véhicule{% endblock %}
 
 
 { # form.as_p comes from django and helps us to display the vehicle form (which is specified in forms.py with the fields) # }
 
 {% block content %}
-    <div id="vehicle_add">
-        <form name="add_vehicle" id="form_add_vehicle" method="POST">
-            <h1>Ajout d'un véhicule</h1><br/>
+    <div class="content-dark-font  p-2">
+        <div class="row justify-content-center">
+        <h1 class="text-golden">Ajout d'un véhicule</h1>
+        </div>
+
+        <div class=" row justify-content-center  p-2">
+            <div class="">
+        <form class="text-white" name="add_vehicle"  method="POST">
             {% csrf_token %}
-            {{ vehicle_form.as_p }}
-            <p><input type="submit" class="btn btn-success" value="Valider"/></p>
-        </form>
+            {{ vehicle_form|crispy }}
+            <button type="submit" class="btn btn-success" value="Valider">Valider</button>
+        </form></div>
+        </div>
+
     </div>
 {% endblock %}

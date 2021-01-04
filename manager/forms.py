@@ -10,6 +10,12 @@ class VehicleForm(forms.ModelForm):
     class Meta:
         model = Vehicle
         fields = ('brand', 'manufacturer_name', 'registration', 'engine_serial_number')
+        labels = {
+            "brand":"Marque",
+            "manufacturer_name": "Fabricant",
+            "registration": "Immatriculation",
+            "engine_serial_number":"Numéro de série"
+        }
 
-    agencies = forms.ModelMultipleChoiceField(queryset=Agency.objects.all())
-    categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all())
+    agencies = forms.ModelMultipleChoiceField(label='Agence',queryset=Agency.objects.all())
+    categories = forms.ModelMultipleChoiceField(label='Catégorie',queryset=Category.objects.all())

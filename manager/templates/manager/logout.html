@@ -2,8 +2,8 @@
 {% block title %}Logged out{% endblock %}
 
 {% block content %}
-    <div id="home-main-content">
-        <h1>Veuillez vous <a href="{% url 'gestion:login' %}?next={% url 'gestion:gestion' %}">connecter</a>
+<div class="card text-justify text-white p-2">
+        <h1 >Veuillez vous <a href="{% url 'gestion:login' %}?next={% url 'gestion:gestion' %}">connecter</a>
             pour accéder aux pages gestionnaire</h1>
     </div>
 {% endblock %}

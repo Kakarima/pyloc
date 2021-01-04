@@ -1718,8 +1718,9 @@ pre code {
 }
 
 .table-hover tbody tr:hover {
-  color: #212529;
-  background-color: rgba(0, 0, 0, 0.075);
+  color: black;
+  background-color: grey;
+  opacity: 0.8;
 }
 
 .table-primary,
