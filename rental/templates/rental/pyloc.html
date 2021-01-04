@@ -81,10 +81,15 @@
 
         {# there is no vehicle available and no contract of reservation #}
         {% if not display_results or vehicles.count == 0 %}
-            <div class="col-md-4 ml-auto p-2 align-self-center" id="form_resa">
-                <form id="form_resa" name="search" method="post" action=" ">
+            <div class="col-md-4 ml-auto p-2 align-self-center content-dark-font" >
+            <div class="row justify-content-center p-2">
+                <h4 class="text-golden text-center">Réserver d&egrave;s aujourd'hui</h4>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                <form class="text-white" name="search" method="post" action=" ">
                     {% csrf_token %}
-                    <h5 class="text-white text-center">Réserver d&egrave;s aujourd'hui</h5>
+
                     <div class="form-group ">
                         {{ searchvehicleagency.name.errors }}
                         {#                            <label class="text-white" for="id_search_agency-name">Agence :</label>#}
@@ -125,10 +130,12 @@
                         {#                                    :</label>#}
                         {{ searchvehiclecustomerform.phone|as_crispy_field }}
                     </div>
-                    <button type="submit" class="btn btn-dark m3 p-2" name="btn_submit" value="Valider">
+                    <button type="submit" class="btn btn-light m3 p-2" name="btn_submit" value="Valider">
                         Valider
                     </button>
                 </form>
+                    </div>
+                </div>
             </div>
 
         {% endif %}
