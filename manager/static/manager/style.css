@@ -212,6 +212,15 @@ main{
     font-size: 15px;
 }
 
+.content-table{
+    max-height: 65vh;
+    overflow-y: scroll;
+}
+
+a{
+    text-decoration: none;
+    color: unset;
+}
 /* LOGIN */
 
 

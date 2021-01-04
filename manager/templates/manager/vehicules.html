@@ -3,16 +3,15 @@
 {% block title %}Gestion de la liste des véhicules{% endblock %}
 
 {% block content %}
-    <div id="vehicule_presentation">
-        <div id="vehicule_actions">
-            <h3>Liste des véhicules</h3>
+    <div class="content-dark-font">
+        <div class="row justify-content-center p-2">
+            <h3 class="text-golden">Liste des véhicules</h3>
         </div>
-
-        <div id="vehicules_list">
-            <div class="add-btn-container">
-                <button type="button" class="btn btn-warning"><a href="{%url 'manager:ajout_vehicule'%}">Ajouter un véhicule</a></button>
-            </div>
-            <table class="table" id="Liste_des_véhicules" aria-label="Liste des véhicules">
+        <div class="row justify-content-center p-2" >
+                <button type="button" class="btn btn-warning"><a class="ajout-vehicule" href="{%url 'manager:ajout_vehicule'%}">Ajouter un véhicule</a></button>
+        </div>
+    <div class="content-table table-responsive p-2">
+            <table class="table table-hover" id="Liste_des_véhicules" aria-label="Liste des véhicules">
                 <thead>
                     <tr>
                         <td><strong>Nom Agence</strong></td>
@@ -44,6 +43,7 @@
                 {% endfor %}
                 </tbody>
             </table>
+    </div>
         </div>
     </div>
 
