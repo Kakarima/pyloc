@@ -124,6 +124,12 @@ header a
 .content-golden{
 background: linear-gradient(goldenrod, darkgoldenrod);
 }
+
+.container-manager{
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
 /* SECTION */
 
 section {
@@ -138,7 +144,9 @@ main{
     background-size: cover;
     background-repeat: no-repeat;
 }
-
+.content-manager{
+    min-height: 76vh;
+}
 /* VEHICULES */
 
 #vehicule_presentation {
@@ -252,6 +260,7 @@ footer {
     margin-top: 80px;
     margin-bottom: 5px;
 }
+
 
 
 

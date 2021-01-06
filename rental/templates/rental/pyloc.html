@@ -10,12 +10,12 @@
          id="content-index"
             {% endif %}>
 
-        <div class="d-flex flex-column flex-md-row justify-content-between">
+        <div class="d-flex flex-column flex-md-row justify-content-center">
             {% if display_results and already_contracted.count > 0 and vehicles.count == 0 %}  {# we check if the user has a contract and that there is no vehicle available #}
                 <div class="card align-self-center results p-2 m-2">
                     <div class="card-body">
                         <h5 class=" text-center ">Résultat de la recherche</h5>
-                        <h5 class=" text-justify" id="nombre_resultat">
+                        <h5 class=" text-justify text-danger">
                             Un contrat existe déjà sur le modèle de véhicule sélectionné, vous ne pouvez pas réserver à
                             cette date. Veuillez modifier les champs pour effectuer une réservation.
                         </h5>
@@ -26,7 +26,11 @@
                 <div class="card align-self-center results p-2 m-2">
                     <div class="card-body">
                         <h5 class=" text-center ">Résultat de la recherche</h5>
-                        <h5 class=" text-justify" id="nombre_resultat">
+                        <h5  {% if vehicles.count == 0 %}
+                            class="text-justify text-danger"
+                            {% else %}
+                            class="text-justify text-success"
+                  ○          {% endif %}>
                             {{ vehicles.count }} véhicules trouvés suite à votre recherche
                         </h5>
                     </div>
