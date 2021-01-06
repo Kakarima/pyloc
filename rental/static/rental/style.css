@@ -15,27 +15,9 @@ p {
 }
 
 body {
-    min-height: 100vh;
-    max-width: 100vw;
-    margin: unset;
-    padding: unset;
-    display: flex;
-    flex-direction: column;
     font-family: 'Cabin', arial, serif;
 }
 
-/* HEADER */
-
-/*header {*/
-/*    display: flex;*/
-/*    justify-content: space-between; !*Les éléments sont répartis équitablement ; Le bord du premier est aligné sur le début du conteneur et la fin du dernier est alignée sur la fin du conteneur *!*/
-/*    background-color: white;*/
-/*}*/
-
-/*header a {*/
-/*    text-decoration: none;*/
-/*    color: black*/
-/*}*/
 
 #main-title {
     font-size: 65px;
@@ -46,14 +28,6 @@ body {
     color: black;
 }
 
-#icons-menu {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-right: 30px;
-}
 
 #icons {
     /*margin-top: 15px;*/
@@ -77,51 +51,10 @@ body {
     color:black;
 }
 
-#main-menu {
-    display: flex;
-    justify-content: right;
-    font-weight: bold;
-    font-size: 20px;
-    padding-bottom: 5px;
-}
 
-#main-menu ul {
-    display: flex;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    list-style-type: none;
-}
-
-#main-menu ul li {
-    margin-left: 10px;
-    padding: 5px;
-    font-size: 1em;
-    text-transform: uppercase;
-    color: black
-
-}
-
-#main-menu ul li a {
-    color: black
-}
-
-#main-menu ul li a:hover {
-    background: linear-gradient(black, darkgray);
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-}
 
 /* SECTION */
 
-section {
-    flex-grow: 1;
-    background: url("./Images/Location.webp") no-repeat center center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
 
 
 #home-main-content {
@@ -179,22 +112,6 @@ button:hover {
     background-color: green;
 }
 
-#rental-form td {
-    color: white;
-    font-size: 15px;
-    text-align: center;
-    width: 50%;
-    padding: 5px;
-    font-weight: bold;
-}
-
-#rental-form td input {
-    font-size: 15px;
-}
-
-#rental-form td select {
-    font-size: 15px;
-}
 
 
 /* FOOTER */
@@ -451,13 +368,9 @@ footer a {
 /* REGISTRATION */
 
 .registration {
-    display: flex;
-    justify-content: space-evenly;
-    background-color: black;
-    opacity: 0.8;
-    color: white;
     overflow-y: scroll;
-    height: 540px;
+    height: 65vh;
+    width: 100%;
 }
 
 .registration h1 {
