@@ -7,46 +7,68 @@
         <div class="row justify-content-center p-2">
             <h3 class="text-golden">Liste des véhicules</h3>
         </div>
-        <div class="row justify-content-center p-2" >
-                <button type="button" class="btn btn-warning"><a class="ajout-vehicule" href="{%url 'manager:ajout_vehicule'%}">Ajouter un véhicule</a></button>
+        <div class="row justify-content-center p-2">
+            <button type="button" class="btn btn-warning"><a class="ajout-vehicule"
+                                                             href="{% url 'manager:ajout_vehicule' %}">Ajouter un
+                véhicule</a></button>
         </div>
-    <div class="row justify-content-center p-2">
-    <div class="content-table table-responsive-sm  p-2">
-            <table class="table table-hover" id="Liste_des_véhicules" aria-label="Liste des véhicules">
-                <thead>
+        <div class="row justify-content-center p-2">
+            <div class="col-8 text-center">
+                <h4 class="text-white">Recherchez un véhicule...</h4>
+                <input class="form-control" id="myInput" type="text"
+                       placeholder="Recherchez par agence, ou catégorie, ou numéro d'enregistrement ">
+            </div>
+        </div>
+
+        <div class="row justify-content-center p-2">
+            <div class="content-table table-responsive-sm p-3 ">
+                <table class="table table-hover" id="myTable" aria-label="Liste des véhicules">
+                    <thead>
                     <tr>
-                        <td><strong>Nom Agence</strong></td>
+                        <td><strong>Agence</strong></td>
                         <td><strong>Code</strong></td>
-                        <td><strong>Label</strong></td>
-                        <td><strong>Sample</strong></td>
+                        <td><strong>Catégorie</strong></td>
+                        <td><strong>Modèle</strong></td>
                         <td><strong>Marque</strong></td>
                         <td><strong>Numéro d'enregistrement</strong></td>
                         <td></td>
                     </tr>
-                </thead>
+                    </thead>
 
-                <tbody>
-                {% for vehicle in vehicules %}
-                    <tr>
-                        <td>{{ vehicle.agence.name }}</td>
-                        <td>{{ vehicle.category.code }}</td>
-                        <td>{{ vehicle.category.label }}</td>
-                        <td>{{ vehicle.category.sample }}</td>
-                        <td>{{ vehicle.brand }}</td>
-                        <td>{{ vehicle.registration }}</td>
-                        <td>
-                            <form id="suppression" method="post" action={% url 'manager:suppression_vehicule' vehicle.id %}>
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-warning">Supprimer</button>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-    </div>
+                    <tbody>
+                    {% for vehicle in vehicules %}
+                        <tr>
+                            <td>{{ vehicle.agence.name }}</td>
+                            <td>{{ vehicle.category.code }}</td>
+                            <td>{{ vehicle.category.label }}</td>
+                            <td>{{ vehicle.category.sample }}</td>
+                            <td>{{ vehicle.brand }}</td>
+                            <td>{{ vehicle.registration }}</td>
+                            <td>
+                                <form id="suppression" method="post"
+                                      action={% url 'manager:suppression_vehicule' vehicle.id %}>
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-warning">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     </div>
+
+    <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 
 {% endblock %}
