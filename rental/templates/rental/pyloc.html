@@ -10,9 +10,9 @@
          id="content-index"
             {% endif %}>
 
-        <div class="d-flex flex-column flex-md-row justify-content-center">
+        <div class="d-flex flex-column flex-md-row justify-content-end">
             {% if display_results and already_contracted.count > 0 and vehicles.count == 0 %}  {# we check if the user has a contract and that there is no vehicle available #}
-                <div class="card align-self-center results p-2 m-2">
+                <div class="card align-self-center ml-auto mr-auto  results p-2 m-2">
                     <div class="card-body">
                         <h5 class=" text-center ">Résultat de la recherche</h5>
                         <h5 class=" text-justify text-danger">
@@ -23,7 +23,7 @@
                 </div>
 
             {% elif display_results %}  {# there is no contract on this vehicle and there still are some vehicles available so we show the number of vehicles available #}
-                <div class="card align-self-center results p-2 m-2">
+                <div class="card align-self-center ml-auto mr-auto  results p-2 m-2">
                     <div class="card-body">
                         <h5 class=" text-center ">Résultat de la recherche</h5>
                         <h5  {% if vehicles.count == 0 %}
@@ -53,12 +53,8 @@
                                     <li class="list-group-item text-black-50">
                                         <div class="row align-items-md-center justify-content-sm-center">
                                             <div class="col-sm-12 col-md-8 col-md-10 text-dark font-weight-bold text-justify">
-                                                <div class="d-block p-2">
-                                                {{ category.label }} immatriculé {{ vehicle.registration }}
-                                                </div>
-                                                <div class="d-block p-2">
-                                                     <strong>{{ category.sample }}</strong>
-                                                </div>
+                                                <div class="d-block "><strong>{{ category.label }}</strong></div>
+                                                <div class="d-block ">{{ category.sample }} immatriculé {{ vehicle.registration }}</div>
                                             </div>
                                             <div>
                                                 <form id="rent_vehicle_{{ forloop.counter }}"
@@ -91,7 +87,7 @@
 
         {# there is no vehicle available and no contract of reservation #}
         {% if not display_results or vehicles.count == 0 %}
-            <div class="col-md-4 ml-auto p-2 align-self-center content-dark-font" >
+            <div class="col-md-4  p-2 align-self-center content-dark-font" >
             <div class="row justify-content-center p-2">
                 <h4 class="text-golden text-center text-uppercase">Réserver d&egrave;s aujourd'hui</h4>
                 </div>
@@ -106,11 +102,11 @@
                         {{ searchvehicleagencyform.name|as_crispy_field }}
                     </div>
                     <div class="form-group ">
-                        {{ searchvehiclecategoriesform.label.errors }}
+                        {{ searchvehiclecategoriesform.sample.errors }}
                         {#                                <label class="text-white" for="id_search_vehicle_category-label">#}
                         {#                                    Choisissez le mod&egrave;le :#}
                         {#                                </label>#}
-                        {{ searchvehiclecategoriesform.label|as_crispy_field }}
+                        {{ searchvehiclecategoriesform.sample|as_crispy_field }}
                     </div>
                     <div class="form-group">
                         {#                                <label class="text-white" for="id_search_dates-date_start">#}

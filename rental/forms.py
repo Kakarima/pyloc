@@ -71,11 +71,11 @@ class SearchVehicleAgencyForm(ModelForm):
 class SearchVehicleCategoriesForm(ModelForm):
     class Meta:
         model = Category
-        fields = ['label']
+        fields = ['sample']
         labels = {
-            "label": "Catégorie"
+            "sample": "Modèle"
         }
-        widgets = {'label': forms.Select(choices=get_VehiclesCategories())}
+        widgets = {'sample': forms.Select(choices=get_VehiclesCategories())}
 
 
 class DateTimeLocalInput(forms.DateTimeInput):  # it is used in the class below

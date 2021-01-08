@@ -177,7 +177,7 @@ def home(request):
             and searchvehiclecustomerform.is_valid() \
             and searchvehicleagencyform.is_valid():
 
-        category_id = searchvehiclecategoriesform.cleaned_data.get('label')  # we retrieve the category
+        category_id = searchvehiclecategoriesform.cleaned_data.get('sample')  # we retrieve the category
         category = Category.objects.get(id=category_id)
         print('category = ' + str(category))
 
