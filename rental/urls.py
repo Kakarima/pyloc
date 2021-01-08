@@ -29,6 +29,7 @@ urlpatterns = [
     path('confidentialite/', views.confidentialite, name='confidentialite'),
     path('register/contract', views.register_contract, name='register_contract'),
     path('403/', permission_denied_view, name='forbidden'),
+    path('contracts/', views.recap_contracts, name='contracts'),
 ]
 
 # Here’s what LoginView does:
