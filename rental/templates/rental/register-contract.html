@@ -4,6 +4,7 @@
 
 {% block content %}
     <div class="container content">
+{% for contract in contracts %}
         <div class="card p-3" id="order-recap">
             <h5 class="title text-center" id="main-title-2">Récapitulatif de la réservation </h5>
             <h6 class="text-justify">Votre réservation a bien été enregistré. Veuillez trouver les détails de votre
@@ -15,22 +16,23 @@
                 </li>
                 <li class="list-group-item">
                     <div class="recap">Date départ :</div>
-                    <div>{{ booking_date_start }}</div>
+                    <div>{{ contract.date_start|date:"d/m/Y H:m" }}</div>
                 </li>
                 <li class="list-group-item">
                     <div class="recap">Date de fin :</div>
-                    <div>{{ booking_date_end }}</div>
+                    <div>{{ contract.date_end |date:"d/m/Y H:m" }}</div>
                 </li>
                 <li class="list-group-item">
                     <div class="recap"> Catégorie de véhicule choisie :</div>
-                    <div>{{ vehicle.category.sample }}</div>
+                    <div>{{ contract.vehicle.category.sample }}</div>
                 </li>
                 <li class="list-group-item">
                     <div class="recap">Agence :</div>
-                    <div>{{ agency.name }}</div>
+                    <div>{{ contract.agence.name }}</div>
                 </li>
             </ul>
         </div>
+{% endfor %}
     </div>
 
 

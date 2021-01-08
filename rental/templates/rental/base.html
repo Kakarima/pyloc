@@ -49,6 +49,9 @@
                         <a class="item-menu p-2 active" href="{% url 'rental:services_categories' %}">Services</a>
                         <a class="item-menu p-2 active" href="{% url 'rental:agences' %}">Agences</a>
                         <a class="item-menu p-2 active" href="{% url 'rental:entreprise_categories' %}">Entreprise</a>
+                        {% if user.is_authenticated %}
+                            <a class="item-menu p-2 active" href="{% url 'rental:contracts' %}">Mes réservations</a>
+                        {% endif %}
                     </nav>
                 </div>
             </div>

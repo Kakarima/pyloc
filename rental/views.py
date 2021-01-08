@@ -128,11 +128,10 @@ def edit_customer(request):
                       {'user_form': user_form, 'customer_form': customer_form, 'next': next_page})
 
 
-def home(request):
-    """ User home page"""
+def recap_contracts(request):
     if request.user.is_authenticated is True:  # if the user is authenticated
         try:
-            contract = Contract.objects.all().get(customer_id=request.user.customer.id)  # then we retrieve all
+            contract = Contract.objects.filter(customer_id=request.user.customer.id) # then we retrieve all
             # the contract that the user has
         except Contract.DoesNotExist:  # if there is no contract, then contract = 0
             contract = None
@@ -140,15 +139,13 @@ def home(request):
         if contract is not None:  # if there is a contract, then we retrieve the contract
             # agency, the vehicle, the start_date, and so on
             context = {
-                'agency': contract.agence,
-                'vehicle': contract.vehicle,
-                'booking_date_start': contract.date_start,
-                'booking_date_end': contract.date_end,
-                'customer': contract.customer,
-                'contract': contract}
+                'contracts': contract}
             return render(request, 'rental/register-contract.html', context)  # we render the page
             # to show the information
 
+
+def home(request):
+    """ User home page"""
     post = request.POST or None  # we verify that the form is well-filled
     searchvehicledatesform = SearchVehicleDatesForm(post, prefix='search_dates')  # we create the
     # search vehicle date form
