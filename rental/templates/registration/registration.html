@@ -7,23 +7,23 @@
 {% block content %}
     <div class="container registration content-dark-font content p-2">
         <div class="row justify-content-center">
-        <h1 class="text-golden">Créer un compte rental</h1>
+            <h1 class="text-golden">Créer un compte rental</h1>
         </div>
         <div class="row justify-content-center">
-        <div class="col-4">
-        <form class="text-white" method="post">
-            {% csrf_token %}
+            <div class="col-4">
+                <form class="text-white" method="post">
+                {% csrf_token %}
 
-{#          we retrieve the user form        #}
-            {{ user_form|crispy }}
-{#          we retrieve the customer form and we display the two forms#}
-            {{ customer_form|crispy }}
-            <p><button class="btn btn-light" type="submit" value="CREER MON COMPTE">CREER MON COMPTE</button></p>
-            <p>Vous avez déjà un compte ?
-                <a class="register-link" href="{% url 'rental:login' %}?next={{ next }}"> Identifiez-vous !</a>
-            </p>
-        </form>
-        </div>
+    {#          we retrieve the user form        #}
+                    {{ user_form|crispy }}
+    {#          we retrieve the customer form and we display the two forms#}
+                    {{ customer_form|crispy }}
+                    <p><button class="btn btn-light" type="submit" value="CREER MON COMPTE">CREER MON COMPTE</button></p>
+                    <p>Vous avez déjà un compte ?
+                        <a class="register-link" href="{% url 'rental:login' %}?next={{ next }}"> Identifiez-vous !</a>
+                    </p>
+                </form>
+            </div>
         </div>
     </div>
 

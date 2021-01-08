@@ -98,12 +98,19 @@ class SearchVehicleDatesForm(forms.Form):
                                    required=True,
                                    input_formats=date_input_formats)
 
+    def clean_date_end(self):
+        date_end = self.cleaned_data['date_end']
+        date_start = self.cleaned_data['date_start']
+        now = datetime.now()
 
-class SearchVehicleCustomerForm(forms.Form):# we show the form of customer when we do the search
+        if date_end and date_start and date_end < date_start:
+            raise forms.ValidationError('La date de fin ne peut pas être inférieure à la date début')
+
+
+class SearchVehicleCustomerForm(forms.Form):  # we show the form of customer when we do the search
     name = forms.CharField(label='Nom', required=True, max_length=100)
     phone = forms.CharField(label='Téléphone', required=True, max_length=255)
     email = forms.EmailField(label="E-Mail", required=True, max_length=255)
-
 
 
 class RentVehicleAgencyDatesForm(forms.Form):  # we show the form of the rentvehicle when we do the rent
