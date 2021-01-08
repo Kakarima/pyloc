@@ -52,8 +52,10 @@
                                 {% for vehicle in vehicles %}
                                     <li class="list-group-item text-black-50">
                                         <div class="row align-items-md-center justify-content-sm-center">
-                                            <div class="col-sm-12 col-md-8 col-md-10 text-dark font-weight-bold text-justify">{{ category.label }}
-                                                immatriculé {{ vehicle.registration }}</div>
+                                            <div class="col-sm-12 col-md-8 col-md-10 text-dark font-weight-bold text-justify">
+                                                <div class="d-block ">{{ category.label }}</div>
+                                                <div class="d-block ">{{ category.sample }} immatriculé {{ vehicle.registration }}</div>
+                                            </div>
                                             <div>
                                                 <form id="rent_vehicle_{{ forloop.counter }}"
                                                       action="{% url 'rental:register_contract' %}" method="POST">
