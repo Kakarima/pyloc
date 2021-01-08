@@ -173,8 +173,7 @@ def recap_contracts(request):
 
         if contract is not None:  # if there is a contract, then we retrieve the contract
             # agency, the vehicle, the start_date, and so on
-            context = {
-                'contracts': contract}
+            context = {'contracts': contract}
             return render(request, 'rental/register-contract.html', context)  # we render the page
             # to show the information
     else:
@@ -260,6 +259,10 @@ def home(request):
             print('vehicle = ' + str(vehicle))
 
         display_form = False
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+
     contracts = None
     if request.user.is_authenticated:
         contracts = Contract.objects.filter(customer_id=request.user.customer.id)
