@@ -10,9 +10,9 @@
          id="content-index"
             {% endif %}>
 
-        <div class="d-flex flex-column flex-md-row justify-content-center">
+        <div class="d-flex flex-column flex-md-row justify-content-end">
             {% if display_results and already_contracted.count > 0 and vehicles.count == 0 %}  {# we check if the user has a contract and that there is no vehicle available #}
-                <div class="card align-self-center results p-2 m-2">
+                <div class="card align-self-center ml-auto mr-auto  results p-2 m-2">
                     <div class="card-body">
                         <h5 class=" text-center ">Résultat de la recherche</h5>
                         <h5 class=" text-justify text-danger">
@@ -23,7 +23,7 @@
                 </div>
 
             {% elif display_results %}  {# there is no contract on this vehicle and there still are some vehicles available so we show the number of vehicles available #}
-                <div class="card align-self-center results p-2 m-2">
+                <div class="card align-self-center ml-auto mr-auto  results p-2 m-2">
                     <div class="card-body">
                         <h5 class=" text-center ">Résultat de la recherche</h5>
                         <h5  {% if vehicles.count == 0 %}
@@ -85,7 +85,7 @@
 
         {# there is no vehicle available and no contract of reservation #}
         {% if not display_results or vehicles.count == 0 %}
-            <div class="col-md-4 ml-auto p-2 align-self-center content-dark-font" >
+            <div class="col-md-4  p-2 align-self-center content-dark-font" >
             <div class="row justify-content-center p-2">
                 <h4 class="text-golden text-center text-uppercase">Réserver d&egrave;s aujourd'hui</h4>
                 </div>
