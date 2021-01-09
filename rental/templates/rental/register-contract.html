@@ -3,37 +3,43 @@
 {% block title %}PyLOC{% endblock %}
 
 {% block content %}
-    <div class="container content">
-{% for contract in contracts %}
-        <div class="card p-3" id="order-recap">
-            <h5 class="title text-center" id="main-title-2">Récapitulatif de la réservation </h5>
-            <h6 class="text-justify">Votre réservation a bien été enregistré. Veuillez trouver les détails de votre
-                réservation</h6>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <div class="recap"> Contrat de location n° :</div>
-                    <div>{{ contract.id }}</div>
-                </li>
-                <li class="list-group-item">
-                    <div class="recap">Date départ :</div>
-                    <div>{{ contract.date_start|date:"d/m/Y H:m" }}</div>
-                </li>
-                <li class="list-group-item">
-                    <div class="recap">Date de fin :</div>
-                    <div>{{ contract.date_end |date:"d/m/Y H:m" }}</div>
-                </li>
-                <li class="list-group-item">
-                    <div class="recap"> Catégorie de véhicule choisie :</div>
-                    <div>{{ contract.vehicle.category.sample }}</div>
-                </li>
-                <li class="list-group-item">
-                    <div class="recap">Agence :</div>
-                    <div>{{ contract.agence.name }}</div>
-                </li>
-            </ul>
+    <div class="container content-dark-font content">
+
+        <div class="list-group align-self-center text white bg-transparent border-golden overflow-auto rounded">
+            <h3 class="text-golden text-center p-3 text-uppercase">Mes réservations </h3>
+            {% for contract in contracts %}
+
+
+                <div class="list-group-item text-white border-golden">
+                    <div class="d-block">
+                        <div class=" d-inline recap p-2"> Contrat de location n° :</div>
+                        <div class="d-inline text-white p-2">{{ contract.id }}</div>
+                    </div>
+                    <div class="d-block">
+                    <div class="d-inline">
+                        <div class="d-inline recap p-2">Date départ :</div>
+                        <div class="d-inline p-2">{{ contract.date_start|date:"d/m/Y H:m" }}</div>
+                    </div>
+                    <div class="d-inline">
+                        <div class="d-inline recap p-2">Date de fin :</div>
+                        <div class="d-inline p-2">{{ contract.date_end |date:"d/m/Y H:m" }}</div>
+                    </div>
+                    </div>
+                    <div class="d-block">
+                    <div class="d-inline">
+                        <div class="d-inline recap p-2"> Modèle de véhicule choisie :</div>
+                        <div class="d-inline v">{{ contract.vehicle.category.sample }}</div>
+                    </div>
+                    </div>
+                <div class="d-block">
+                    <div class="d-inline">
+                        <div class="d-inline recap p-2">Agence :</div>
+                        <div class="d-inline p-2">{{ contract.agence.name }}</div>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
         </div>
-{% endfor %}
+
     </div>
-
-
 {% endblock %}
