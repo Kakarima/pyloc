@@ -5,12 +5,12 @@
 {% block content %}
     <div class="container content-dark-font content">
 
-        <div class="list-group align-self-center text white bg-transparent border-golden overflow-auto rounded">
+        <div class="list-group align-self-center text white bg-transparent border-golden overflow-auto rounded p-2">
             <h3 class="text-golden text-center p-3 text-uppercase">Mes réservations </h3>
             {% for contract in contracts %}
 
 
-                <div class="list-group-item text-white border-golden">
+                <div class="list-group-item text-white border-golden p-2">
                     <div class="d-block">
                         <div class=" d-inline recap p-2"> Contrat de location n° :</div>
                         <div class="d-inline text-white p-2">{{ contract.id }}</div>
