@@ -143,7 +143,6 @@ def recap_contracts(request):
             return render(request, 'rental/register-contract.html', context)  # we render the page
             # to show the information
 
-
 def home(request):
     """ User home page"""
     post = request.POST or None  # we verify that the form is well-filled
@@ -268,3 +267,19 @@ def register_contract(request):
         contract.save()  # we save the contract
 
     return redirect('/rental')
+
+
+def reservation(request):
+    if request.user.is_authenticated is True:  # if the user is authenticated
+        try:
+            contract = Contract.objects.filter(customer_id=request.user.customer.id) # then we retrieve all
+            # the contract that the user has
+        except Contract.DoesNotExist:  # if there is no contract, then contract = 0
+            contract = None
+
+        if contract is not None:  # if there is a contract, then we retrieve the contract
+            # agency, the vehicle, the start_date, and so on
+            context = {
+                'contracts': contract}
+            return render(request, 'rental/reservation.html', context)  # we render the page
+            # to show the information
