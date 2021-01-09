@@ -1,6 +1,5 @@
 {% extends "rental/base.html" %}
 
-{% block title %}PyLOC{% endblock %}
 
 {% block content %}
     <div class="container content">
@@ -23,7 +22,7 @@
                     <div>{{ contract.date_end |date:"d/m/Y H:m" }}</div>
                 </li>
                 <li class="list-group-item">
-                    <div class="recap"> Catégorie de véhicule choisie :</div>
+                    <div class="recap"> Modèle de véhicule choisi :</div>
                     <div>{{ contract.vehicle.category.sample }}</div>
                 </li>
                 <li class="list-group-item">

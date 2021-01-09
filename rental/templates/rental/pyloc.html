@@ -58,7 +58,7 @@
                                             </div>
                                             <div>
                                                 <form id="rent_vehicle_{{ forloop.counter }}"
-                                                      action="{% url 'rental:reservation' %}" method="POST">
+                                                      action="{% url 'rental:register_contract' %}" method="POST">
                                                     {% csrf_token %}
                                                     <input type="hidden" name="agency_id"
                                                            value="{{ vehicle.agence.id }}"/>

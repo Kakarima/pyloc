@@ -100,7 +100,7 @@ def register(request):
                           {'user_form': user_form, 'customer_form': customer_form, 'next': next_page})
     else:
         user_form = UserRegistrationForm(
-            initial={'username': request.GET.get('username'), 'email': request.GET.get('email')})   # we show
+            initial={'username': request.GET.get('username'), 'email': request.GET.get('email')})  # we show
         # the user registration form so the user can fill the data
         customer_form = CustomerEditForm(
             initial={'phone': request.GET.get('phone')})  # same for the customer
@@ -131,7 +131,7 @@ def edit_customer(request):
 def recap_contracts(request):
     if request.user.is_authenticated is True:  # if the user is authenticated
         try:
-            contract = Contract.objects.filter(customer_id=request.user.customer.id) # then we retrieve all
+            contract = Contract.objects.filter(customer_id=request.user.customer.id)  # then we retrieve all
             # the contract that the user has
         except Contract.DoesNotExist:  # if there is no contract, then contract = 0
             contract = None
@@ -142,9 +142,18 @@ def recap_contracts(request):
                 'contracts': contract}
             return render(request, 'rental/register-contract.html', context)  # we render the page
             # to show the information
+    else:
+
+        return render(request, 'rental/remerciements.html')
+
+
+def remerciements(request):
+    return render(request, 'rental/remerciements.html')
+
 
 def home(request):
     """ User home page"""
+
     post = request.POST or None  # we verify that the form is well-filled
     searchvehicledatesform = SearchVehicleDatesForm(post, prefix='search_dates')  # we create the
     # search vehicle date form
@@ -235,7 +244,6 @@ def home(request):
 @user_passes_test(customer_only_check, login_url='rental:forbidden')  # and it should be a customer
 # because a manager can't rent a car
 def register_contract(request):
-
     from .forms import RentVehicleAgencyDatesForm  # it import the forms from forms.py
     post = request.POST or None
 
@@ -266,20 +274,4 @@ def register_contract(request):
                             date_end=booking_date_end, scheduled_date_end=booking_date_end)
         contract.save()  # we save the contract
 
-    return redirect('/rental')
-
-
-def reservation(request):
-    if request.user.is_authenticated is True:  # if the user is authenticated
-        try:
-            contract = Contract.objects.filter(customer_id=request.user.customer.id) # then we retrieve all
-            # the contract that the user has
-        except Contract.DoesNotExist:  # if there is no contract, then contract = 0
-            contract = None
-
-        if contract is not None:  # if there is a contract, then we retrieve the contract
-            # agency, the vehicle, the start_date, and so on
-            context = {
-                'contracts': contract}
-            return render(request, 'rental/reservation.html', context)  # we render the page
-            # to show the information
+    return render(request, 'rental/reservation.html', {'contract': contract})

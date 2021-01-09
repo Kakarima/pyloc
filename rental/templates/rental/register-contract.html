@@ -2,7 +2,12 @@
 
 {% block title %}PyLOC{% endblock %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
+ {% if contracts == None %}
+
+   {% else %}
     <div class="container content-dark-font content">
 
         <div class="list-group align-self-center text white bg-transparent border-golden overflow-auto rounded p-2">
@@ -41,5 +46,5 @@
             {% endfor %}
         </div>
 
-    </div>
+    </div> {%  endif %}
 {% endblock %}
