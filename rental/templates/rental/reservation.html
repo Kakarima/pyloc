@@ -1,0 +1,40 @@
+{% extends "rental/base.html" %}
+
+
+{% block content %}
+    <div class="container content">
+        <div class="card p-3" id="order-recap">
+            <h5 class="title text-center" id="main-title-2">Récapitulatif de la réservation </h5>
+            <h6 class="text-justify">Votre réservation a bien été enregistré. Veuillez trouver les détails de votre
+                réservation</h6>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="recap"> Contrat de location n° :</div>
+                    <div>{{ contract.id }}</div>
+                </li>
+                <li class="list-group-item">
+                    <div class="recap">Date départ :</div>
+                    <div>{{ contract.date_start|date:"d/m/Y H:m" }}</div>
+                </li>
+                <li class="list-group-item">
+                    <div class="recap">Date de fin :</div>
+                    <div>{{ contract.date_end |date:"d/m/Y H:m" }}</div>
+                </li>
+                <li class="list-group-item">
+                    <div class="recap"> Modèle de véhicule choisi :</div>
+                    <div>{{ contract.vehicle.category.sample }}</div>
+                </li>
+                <li class="list-group-item">
+                    <div class="recap">Agence :</div>
+                    <div>{{ contract.agence.name }}</div>
+                </li>
+            </ul>
+            <div class="col-3 justify-content-center py-2">
+            <button class="btn btn-success"><a href="{% url 'rental:home' %}">Retour page d'accueil</a></button>
+                </div>
+        </div>
+    </div>
+
+
+{% endblock %}
