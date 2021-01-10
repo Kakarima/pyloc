@@ -279,3 +279,5 @@ def register_contract(request):
         contract.save()  # we save the contract
 
     return render(request, 'rental/reservation.html', {'contract': contract})
+
+

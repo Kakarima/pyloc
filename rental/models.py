@@ -34,7 +34,7 @@ class Category(models.Model):
     code = models.CharField(max_length=1, unique=True)
     label = models.CharField(max_length=30)
     sample = models.CharField(max_length=30)
-    image = models.ImageField(upload_to='rental/photos', null=True, max_length=300)
+    image = models.ImageField(upload_to='rental/photos/', null=True, max_length=300)
     description = models.TextField(null=True)
     nb_seats = models.IntegerField(default=5)
     nb_luggage = models.IntegerField(default=0)

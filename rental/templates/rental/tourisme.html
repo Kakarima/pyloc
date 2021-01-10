@@ -14,7 +14,7 @@
     {% for category in category_list %}
     <div class="list-item">
         <div class="img-container">
-            <img src="{% static 'rental/images/' %}{{category.image}}" alt="image" />
+            <img src="{{category.image.url}}" alt="image" />
         </div>
         <div class="item-description">
             <p>({{ category.code }}) {{ category.label }}<br>{{ category.sample }}</p>
