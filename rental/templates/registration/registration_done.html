@@ -1,10 +1,16 @@
 {% extends "rental/base.html" %}
+{% load static %}
 {% block title %}Bienvenue dans rental{% endblock %}
 
 {% block content %}
-    <div class="registration-done">
-        <h1>Bienvenue {{ new_user.first_name }} !</h1>
-        <p>Votre compte a été créé. Vous pouvez maintenant vous
-            <a href="{% url "rental:login" %}?next={{ next }}">connecter</a>.</p>
+    <div class="container content content-dark-font  p-3">
+        <div class="row justify-content-center text-justify">
+            <h1 class="text-golden">Bienvenue {{ new_user.first_name }} !</h1>
+        </div>
+        <div class="row align-self-center justify-content-center p-2">
+            <img class="col-5 p-2  mb-2" src="{% static 'rental/icones/clicli.png' %}" alt="Bienvenue">
+        </div>
+        <div class="row justify-content-center text-white text-justify ">Votre compte a été créé. Vous pouvez maintenant vous  <a class="register-link pl-2" href="{% url "rental:login" %}?next={{ next }}">  connecter</a>.
+        </div>
     </div>
 {% endblock %}
