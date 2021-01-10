@@ -3,14 +3,14 @@
 {% block title %}Bienvenue dans rental{% endblock %}
 
 {% block content %}
-    <div class="container content content-dark-font  p-3">
-        <div class="row justify-content-center text-justify">
-            <h1 class="text-golden">Bienvenue {{ new_user.first_name }} !</h1>
+    <div class="container content content-dark-font justify-content-center p-3">
+        <div class="row justify-content-center text-justify p-2">
+            <h1 class="text-center text-golden">Bienvenue {{ new_user.first_name }} !</h1>
         </div>
         <div class="row align-self-center justify-content-center p-2">
             <img class="col-5 p-2  mb-2" src="{% static 'rental/icones/clicli.png' %}" alt="Bienvenue">
         </div>
-        <div class="row justify-content-center text-white text-justify ">Votre compte a été créé. Vous pouvez maintenant vous  <a class="register-link pl-2" href="{% url "rental:login" %}?next={{ next }}">  connecter</a>.
+        <div class="row justify-content-center text-white text-justify p-2">Votre compte a été créé. Vous pouvez maintenant vous  <a class="register-link pl-md-2" href="{% url "rental:login" %}?next={{ next }}">  connecter</a>.
         </div>
     </div>
 {% endblock %}
