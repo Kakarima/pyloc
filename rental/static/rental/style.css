@@ -513,6 +513,11 @@ footer a {
     height: 540px;
 }
 
+.conditions-generales h5{
+    margin: unset;
+    padding:unset ;
+}
+
 
 .conditions-generales p {
     font-size: 15px;

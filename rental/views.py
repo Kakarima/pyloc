@@ -222,6 +222,9 @@ def home(request):
             print('vehicle = ' + str(vehicle))
 
         display_form = False
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
 
     return render(request, 'rental/pyloc.html', {'searchvehicledatesform': searchvehicledatesform,
                                                  'searchvehiclecategoriesform': searchvehiclecategoriesform,
@@ -237,7 +240,8 @@ def home(request):
                                                  'display_booking_date_end': display_booking_date_end,
                                                  'agency': agency,
                                                  'category': category,
-                                                 'customer': customer})
+                                                 'customer': customer,
+                                                 'contracts': contracts})
 
 
 @login_required(login_url='rental:login')  # in order to register a contract, the user should be connected
@@ -275,3 +279,5 @@ def register_contract(request):
         contract.save()  # we save the contract
 
     return render(request, 'rental/reservation.html', {'contract': contract})
+
+
