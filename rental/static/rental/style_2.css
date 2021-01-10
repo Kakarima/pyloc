@@ -1,66 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Comfortaa:wght@300;400;500;600;700&family=Lato:ital,wght@0,300;0,400;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-
-
-.card-img{
-    height:100%
-}
-
-.menu a:hover {
-    background: linear-gradient(black, darkgray);
-    color: white;
-    border-radius: 10px;
-}
-main{
-    padding: unset;
-    margin: unset;
-background-image: url('../rental/images/Location.webp') !important;
-background-repeat: no-repeat;
-background-size: cover;
-}
-
-#slogan{
-    margin: unset;
-    padding: unset;
-    font-weight: bold;
-    font-style: italic;
-    font-size: xx-large;
-}
-
-#form_resa{
-    background: linear-gradient(black,grey);
-    opacity: 0.8;
-    border-radius: 10px;
-    /*padding: 10px;*/
-    /*width:40vw ;*/
-    /*height: 75vh;*/
-    color: white;
-}
-/*@media (min-width: 992px) {*/
-/*    #form_resa {*/
-/*        background: linear-gradient(black, grey);*/
-/*        opacity: 0.8;*/
-/*        border-radius: 10px;*/
-/*        !*padding: 10px;*!*/
-/*        !*width:40vw ;*!*/
-/*        height: 75vh;*/
-/*        color: white;*/
-/*    }*/
-
-/*body{
-    font-family: 'Cabin';
-    baground-image: url('../img/peugeot-2008-feature.jpg')!important;
-}*/
-
-/*a:hover{*/
-/*    text-decoration: none;*/
-/*    background: linear-gradient(black, darkgray);*/
-/*    color: white;*/
-/*    padding: 10px;*/
-/*    border-radius: 10px;*/
-
-/*}*/
-/* ------------------NAVBAR------------------*/
+/* ------------------ HEADER : NAVBAR ------------------*/
 
 #main-title:hover{
     background: none!important;
@@ -110,7 +48,7 @@ a.item-menu:hover{
     border-radius: 10px;!important;
 }
 
-/*---------------Main content--------------*/
+/*---------------MAIN CONTENT GENERAL--------------*/
 .main-content{
     background-color: #0c5460;
 }
@@ -119,96 +57,28 @@ a.item-menu:hover{
     min-height: 65vh;
 }
 
-/*----------------FOOTER---------------*/
-.footer{
-    background: linear-gradient(black, darkgray)!important;
-    color: white !important;
+.content-dark-font{
+    background: rgba(0,0,0,0.8);
+    border-radius: 10px;
 }
 
-footer a{
-    text-decoration: none!important;
-    color: white!important;
-}
-
-footer a:hover{
-    text-decoration: none!important;
+#title{
+    font-size:xx-large;
+    text-justify: auto;
+    text-align: center;
     color: goldenrod!important;
 }
 
-/*---------Tourisme----------*/
-
-.card-body{
-    background : none;
-    opacity: 0.8;
-
-
+main{
+    padding: unset;
+    margin: unset;
+background-image: url('../rental/images/Location.webp') !important;
+background-repeat: no-repeat;
+background-size: cover;
 }
 
-.card{
+/*--------------------- MAIN CONTENT : Result from Research -----------------*/
 
-    border-radius: 10px;
-    background : rgba(0,0,0,0.8);
-}
-
-#tourisme-vehicule{
-    background: linear-gradient(black,grey);
-    overflow-y: scroll;
-    height: 65vh;
-
-}
-
-@media (min-width: 992px) {
-    #tourisme-vehicule {
-        background: linear-gradient(black, grey);
-
-    }
-
-
-    }
-
-/*----------------------TOURISM-CATEGORY-DETAILS---------------*/
- #content-category{
-     background: rgba(0,0,0,0.8);
-     border-radius: 10px;
-     color: white;
-
- }
-
-@media (min-width:1300px) {
-    #content-category{
-        height: 65vh;
-          }
-    }
-
-#title-details{
-    color: goldenrod;
-    font-size: xx-large;
-
-}
- .icon-detail{
-     background: rgba(255,255,255,0.8);
- }
-
- em{
-     color:goldenrod;
- }
-
-/*---------------SERVICE---------------*/
-
-#content-service{
-    background: rgba(0,0,0,0.8);
-    border-radius: 10px;
-    color: white;
-
-}
-
-@media (min-width:1400px) {
-    #content-service{
-        height: 70vh;
-    }
-}
-
-/*---------------------Resultats Rechecher-----------------*/
 
 .results{
     background: rgba(0,0,0,0.8);
@@ -218,11 +88,6 @@ footer a:hover{
 
 .card-title{
     color: goldenrod;
-}
-
-#nombre_resultat{
-
-    color: darkred;
 }
 
 .table td{
@@ -260,28 +125,102 @@ footer a:hover{
     }
 }
 
-#title{
-    font-size:xx-large;
-    text-justify: auto;
-    text-align: center;
-    color: goldenrod!important;
-}
-
-.content-dark-font{
-    background: rgba(0,0,0,0.8);
-    border-radius: 10px;
-}
-
 #vehicle-count li{
     background: #dce0c4;
-
 }
 
 .list-entreprise h2{
     color: goldenrod;
 }
 
-/*--------------Contact-------------*/
+
+/*--------- PAGE TOURISME ----------*/
+
+.card-body{
+    background : none;
+    opacity: 0.8;
+
+
+}
+
+.card{
+
+    border-radius: 10px;
+    background : rgba(0,0,0,0.8);
+}
+
+#tourisme-vehicule{
+    background: linear-gradient(black,grey);
+    overflow-y: scroll;
+    height: 65vh;
+
+}
+
+@media (min-width: 992px) {
+    #tourisme-vehicule {
+        background: linear-gradient(black, grey);
+    }
+    }
+
+/*---------------------- PAGE TOURISM-CATEGORY-DETAILS---------------*/
+ #content-category{
+     background: rgba(0,0,0,0.8);
+     border-radius: 10px;
+     color: white;
+ }
+
+@media (min-width:1300px) {
+    #content-category{
+        height: 65vh;
+          }
+    }
+
+#title-details{
+    color: goldenrod;
+    font-size: xx-large;
+
+}
+ .icon-detail{
+     background: rgba(255,255,255,0.8);
+ }
+
+ em{
+     color:goldenrod;
+ }
+
+/*--------------- PAGE SERVICE---------------*/
+
+#content-service{
+    background: rgba(0,0,0,0.8);
+    border-radius: 10px;
+    color: white;
+
+}
+
+@media (min-width:1400px) {
+    #content-service{
+        height: 70vh;
+    }
+}
+
+
+/*----------------FOOTER---------------*/
+.footer{
+    background: linear-gradient(black, darkgray)!important;
+    color: white !important;
+}
+
+footer a{
+    text-decoration: none!important;
+    color: white!important;
+}
+
+footer a:hover{
+    text-decoration: none!important;
+    color: goldenrod!important;
+}
+
+/*-------------- FOOTER : Contact-------------*/
 .font-golden{
     background-color: goldenrod!important;
 }
@@ -294,14 +233,12 @@ footer a:hover{
    border-color: goldenrod;
 }
 
-/*------------Partenaires-------------*/
+/*------------ FOOTER : Partenaires-------------*/
 
 .partenaires{
-
     overflow-y:scroll;
     height: 60vh;
     width: 100%;
-
 }
 
 /*------------LOGO-------------*/

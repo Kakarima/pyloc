@@ -30,7 +30,7 @@
                             class="text-justify text-danger"
                             {% else %}
                             class="text-justify text-success"
-                  ○          {% endif %}>
+                            {% endif %}>
                             {{ vehicles.count }} véhicules trouvés suite à votre recherche
                         </h5>
                     </div>
@@ -60,20 +60,20 @@
                                                 <form id="rent_vehicle_{{ forloop.counter }}"
                                                       action="{% url 'rental:register_contract' %}" method="POST">
                                                     {% csrf_token %}
-                                                    <input type="hidden" name="agency_id"
+                                                    <input type="hidden" name="agency_id" alt="Agence"
                                                            value="{{ vehicle.agence.id }}"/>
                                                     <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}"/>
-                                                    <input type="hidden" name="booking_date_start"
+                                                    <input type="hidden" name="booking_date_start" alt="Date de départ"
                                                            value="{{ booking_date_start }}"/>
-                                                    <input type="hidden" name="booking_date_end"
+                                                    <input type="hidden" name="booking_date_end" alt="Date de fin"
                                                            value="{{ booking_date_end }}"/>
-                                                    <input type="hidden" name="customer_name"
+                                                    <input type="hidden" name="customer_name" alt="nom"
                                                            value="{{ customer.name }}"/>
-                                                    <input type="hidden" name="customer_email"
+                                                    <input type="hidden" name="customer_email" alt="email"
                                                            value="{{ customer.email }}"/>
-                                                    <input type="hidden" name="customer_phone"
+                                                    <input type="hidden" name="customer_phone" alt="telephone"
                                                            value="{{ customer.phone }}"/>
-                                                    <input type="submit" class="btn btn-success" value="Réserver"/>
+                                                    <input type="submit" class="btn btn-success" alt="Bouton reserver" value="Réserver"/>
                                                 </form>
                                             </div>
                                         </div>
@@ -136,9 +136,10 @@
                         {#                                    :</label>#}
                         {{ searchvehiclecustomerform.phone|as_crispy_field }}
                     </div>
-                    <button type="submit" class="btn btn-light m3 p-2" name="btn_submit" value="Valider">
+                    <div class="row justify-content-center">
+                    <button type="submit" class="col-4 btn btn-light m3 p-2" name="btn_submit" value="Valider">
                         Valider
-                    </button>
+                    </button></div>
                 </form>
                     </div>
                 </div>

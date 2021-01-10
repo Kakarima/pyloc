@@ -14,8 +14,10 @@
         </div>
         <div class="row justify-content-center p-2">
             <div class="col-8 text-center">
-                <h4 class="text-white">Recherchez un véhicule...</h4>
+
+                <label class="text-white font-weight-bold" for="myInput" >Recherchez un véhicule...</label>
                 <input class="form-control" id="myInput" type="text"
+                       alt="barre de recherche"
                        placeholder="Recherchez par agence, ou catégorie, ou numéro d'enregistrement ">
             </div>
         </div>
@@ -58,12 +60,12 @@
             </div>
         </div>
     </div>
-    </div>
+
 
     <script>
         $(document).ready(function () {
             $("#myInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
+                let value = $(this).val().toLowerCase();
                 $("#myTable tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
