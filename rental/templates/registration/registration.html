@@ -12,11 +12,11 @@
         <div class="row justify-content-center">
             <div class="col-4">
                 <form class="text-white" method="post">
-                {% csrf_token %}
+                    {% csrf_token %}
 
-    {#          we retrieve the user form        #}
+                    {#          we retrieve the user form        #}
                     {{ user_form|crispy }}
-    {#          we retrieve the customer form and we display the two forms#}
+                    {#          we retrieve the customer form and we display the two forms#}
                     {{ customer_form|crispy }}
                     <div class="row justify-content-center">
                         <button class="btn btn-light" type="submit" value="CREER MON COMPTE">CREER MON COMPTE</button>
@@ -24,10 +24,9 @@
                     <div class="text-justify p-2">Vous avez déjà un compte ?
                         <a class="register-link" href="{% url 'rental:login' %}?next={{ next }}"> Identifiez-vous !</a>
                     </div>
-                    </div>
+
                 </form>
             </div>
         </div>
     </div>
-
 {% endblock %}
