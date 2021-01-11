@@ -57,6 +57,11 @@ a.item-menu:hover{
     min-height: 65vh;
 }
 
+
+.content h1{
+    color:goldenrod;
+}
+
 .content-dark-font{
     background: rgba(0,0,0,0.8);
     border-radius: 10px;
