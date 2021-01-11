@@ -242,6 +242,10 @@ footer a:hover{
     color:goldenrod!important;
 }
 
+.register-link a{
+    text-decoration: none;
+}
+
 .list-group-item{
     background: none;
 }
