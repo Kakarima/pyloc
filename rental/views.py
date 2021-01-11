@@ -259,9 +259,6 @@ def home(request):
             print('vehicle = ' + str(vehicle))
 
         display_form = False
-    contracts = None
-    if request.user.is_authenticated:
-        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
 
     contracts = None
     if request.user.is_authenticated:
