@@ -59,7 +59,8 @@ a.item-menu:hover{
 
 
 .content h1{
-    color:goldenrod;
+    color:goldenrod!important;
+    text-transform: uppercase!important;
 }
 
 .content-dark-font{
