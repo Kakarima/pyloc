@@ -17,7 +17,10 @@ def customer_only_check(user):  # we try to check if a user is in the group 'cus
 def tourism_categories(request):  # We retrieve all the vehicle categories from the table category
     # then we pass the list to the page tourisme.html
     categories = Category.objects.all()
-    context = {'category_list': categories}
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    context = {'category_list': categories,'contracts':contracts}
     return render(request, 'rental/tourisme.html', context)
 
 
@@ -27,17 +30,27 @@ def tourism_category(request, id_category):  # we retrieve the exact id vehicle 
         category = Category.objects.get(id=id_category)
     except Category.DoesNotExist:
         raise Http404
-    return render(request, 'rental/tourism_category.html', {'category': category})
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    context = {'category': category,'contracts':contracts}
+    return render(request, 'rental/tourism_category.html', context)
 
 
 def services_categories(request):  # we render the page services.html
-    return render(request, 'rental/services.html')
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    return render(request, 'rental/services.html', {'contracts': contracts})
 
 
 def agences(request):  # We retrieve all the agencies from the table agency
     # then we pass the list to the page agences.html
     toutesLesAgences = Agency.objects.all()
-    return render(request, 'rental/agences.html', {'agences': toutesLesAgences})
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    return render(request, 'rental/agences.html', {'agences': toutesLesAgences, 'contracts': contracts})
 
 
 def agence(request, id_agency):  # we retrieve the exact id agency from the table agency
@@ -46,31 +59,53 @@ def agence(request, id_agency):  # we retrieve the exact id agency from the tabl
         lAgence = Agency.objects.get(id=id_agency)
     except Agency.DoesNotExist:
         raise Http404
-    return render(request, 'rental/agence.html', {'agency': lAgence})
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+
+    return render(request, 'rental/agence.html', {'agency': lAgence,'contracts':contracts})
 
 
 def entreprise_categories(request):
-    return render(request, 'rental/entreprise.html')
+    contracts=None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    return render(request, 'rental/entreprise.html', {'contracts': contracts})
 
 
 def contact_categories(request):
-    return render(request, 'rental/contact.html')
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    return render(request, 'rental/contact.html', {'contracts': contracts})
 
 
 def conseils(request):
-    return render(request, 'rental/conseils.html')
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    return render(request, 'rental/conseils.html', {'contracts': contracts})
 
 
 def conditions(request):
-    return render(request, 'rental/conditions.html')
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    return render(request, 'rental/conditions.html', {'contracts': contracts})
 
 
 def confidentialite(request):
-    return render(request, 'rental/confidentialite.html')
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    return render(request, 'rental/confidentialite.html', {'contracts': contracts})
 
 
 def partenaires(request):
-    return render(request, 'rental/partenaires.html')
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    return render(request, 'rental/partenaires.html', {'contracts': contracts})
 
 
 def register(request):
@@ -148,7 +183,10 @@ def recap_contracts(request):
 
 
 def remerciements(request):
-    return render(request, 'rental/remerciements.html')
+    contracts = None
+    if request.user.is_authenticated:
+        contracts = Contract.objects.filter(customer_id=request.user.customer.id)
+    return render(request, 'rental/remerciements.html', {'contracts': contracts})
 
 
 def home(request):
