@@ -11,9 +11,9 @@
 main{
     padding: unset;
     margin: unset;
-background-image: url('../rental/images/Location.webp') !important;
-background-repeat: no-repeat;
-background-size: cover;
+    background-image: url('../rental/images/Location.webp') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #slogan{

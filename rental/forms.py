@@ -126,7 +126,7 @@ class RentVehicleAgencyDatesForm(forms.Form):  # we show the form of the rentveh
     customer_phone = forms.CharField(required=True)
 
 
-#Upload Image dans ADMIN
+# Upload Image dans ADMIN
 
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=50)

@@ -20,7 +20,7 @@ def tourism_categories(request):  # We retrieve all the vehicle categories from 
     contracts = None
     if request.user.is_authenticated:
         contracts = Contract.objects.filter(customer_id=request.user.customer.id)
-    context = {'category_list': categories,'contracts':contracts}
+    context = {'category_list': categories, 'contracts': contracts}
     return render(request, 'rental/tourisme.html', context)
 
 
@@ -33,7 +33,7 @@ def tourism_category(request, id_category):  # we retrieve the exact id vehicle 
     contracts = None
     if request.user.is_authenticated:
         contracts = Contract.objects.filter(customer_id=request.user.customer.id)
-    context = {'category': category,'contracts':contracts}
+    context = {'category': category, 'contracts': contracts}
     return render(request, 'rental/tourism_category.html', context)
 
 
@@ -63,11 +63,11 @@ def agence(request, id_agency):  # we retrieve the exact id agency from the tabl
     if request.user.is_authenticated:
         contracts = Contract.objects.filter(customer_id=request.user.customer.id)
 
-    return render(request, 'rental/agence.html', {'agency': lAgence,'contracts':contracts})
+    return render(request, 'rental/agence.html', {'agency': lAgence, 'contracts': contracts})
 
 
 def entreprise_categories(request):
-    contracts=None
+    contracts = None
     if request.user.is_authenticated:
         contracts = Contract.objects.filter(customer_id=request.user.customer.id)
     return render(request, 'rental/entreprise.html', {'contracts': contracts})
@@ -317,5 +317,3 @@ def register_contract(request):
         contract.save()  # we save the contract
 
     return render(request, 'rental/reservation.html', {'contract': contract})
-
-

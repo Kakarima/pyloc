@@ -2,10 +2,10 @@ from django.contrib import admin
 from django.utils.text import Truncator
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import Category, Agency, User
+from .models import Category, Agency, User, Customer
 
 admin.site.register(Agency)
-
+admin.site.register(Customer)
 
 # Define a new User admin
 class UserAdmin(BaseUserAdmin):
@@ -21,7 +21,6 @@ UserAdmin.add_fieldsets = (
 )
 admin.site.unregister(User)
 admin.site.register([User], UserAdmin)
-
 
 
 @admin.register(Category)
@@ -51,7 +50,6 @@ class CategoryAdmin(admin.ModelAdmin):
     lbl_nb_doors.short_description = 'Nb portes'
     view_description.short_description = 'Aperçu'
     lbl_image.short_description = 'Images'
-
 
     fieldsets = (
         ('Identité', {'fields': ('code', 'label', 'sample')}),
